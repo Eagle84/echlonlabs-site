@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="nojs">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,26 +35,49 @@ a{color:inherit}
 .btn.small{padding:.55rem 1rem;font-size:.9rem}
 
 main{position:relative;z-index:1;pointer-events:none}
-.scene{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:6rem clamp(1.25rem,6vw,6rem)}
-.copy{pointer-events:auto;max-width:33rem;text-shadow:0 2px 26px rgba(7,4,24,.95),0 0 2px rgba(7,4,24,.8)}
+.copy{text-shadow:0 2px 26px rgba(7,4,24,.95),0 0 2px rgba(7,4,24,.8)}
 .copy .btn{text-shadow:none}
+.copy a{pointer-events:auto}
 
-.hero{align-items:flex-end;padding-bottom:11vh}
-.hero .copy{max-width:60rem}
+.stage{position:relative;height:100vh;height:100svh;min-height:35rem;display:flex;align-items:flex-end;padding:6rem clamp(1.25rem,6vw,6rem) 7.2rem}
+.stage.sel{align-items:center}
+.panel{max-width:60rem}
+.pane{max-width:33rem}
+.js .pane,.js .stage.sel .intro{display:none}
+.js .pane.on{display:block;animation:arrive .45s ease both}
+@keyframes arrive{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.nojs .stage{height:auto;display:block}
+.nojs .pane{margin-top:3rem}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,6.3vw,5.9rem);line-height:.98;letter-spacing:-.025em;margin:0 0 1.6rem}
 .lede{font-size:clamp(1.1rem,1.5vw,1.3rem);max-width:31rem;margin:0 0 2rem;color:var(--mist)}
 .row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
-
-.world{min-height:125vh;min-height:125svh}
-.kind{font-weight:600;color:var(--c);margin:0 0 .7rem}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.9rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.2rem}
-.world p{margin:0 0 1.1rem}
-.world .more{color:var(--haze)}
-.world .btn{margin-top:.6rem}
+.pane p{margin:0 0 1.1rem}
+.pane .more{color:var(--haze)}
+.pane .btn{margin-top:.4rem}
+.pager{margin-top:1.6rem}
+.pager[hidden]{display:none}
+.back{color:var(--haze);font-weight:500;font-size:.92rem;margin-left:.4rem;text-underline-offset:.25em}
+.back:hover{color:var(--mist)}
 
-.finale{min-height:120vh;min-height:120svh}
-.outro .copy{max-width:40rem}
+.stage{padding-bottom:11vh}
+.index{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:5.5rem clamp(1.25rem,6vw,6rem) 2rem}
+.index .copy{width:min(100%,44rem)}
+.index h2{font-size:clamp(1.9rem,3.6vw,3.1rem);margin-bottom:1.4rem}
+.list{list-style:none;margin:0;padding:0}
+.list a{pointer-events:auto;display:grid;grid-template-columns:11.5rem 1fr;gap:.1rem 1.2rem;align-items:baseline;padding:.42rem .8rem .42rem 1rem;border-left:3px solid color-mix(in srgb,var(--c) 45%,transparent);text-decoration:none;transition:background-color .15s ease,border-color .15s ease}
+.list li+li a{margin-top:.2rem}
+.list .nm{font-family:var(--display);font-weight:500;font-size:1.02rem;color:#fff}
+.list .kd{color:var(--c);font-weight:600;font-size:.86rem}
+.list .ds{grid-column:2;color:var(--mist);font-size:.93rem;line-height:1.4}
+.list .nm{grid-row:span 2}
+.list a:hover,.list a:focus-visible,.list a.on{background:color-mix(in srgb,var(--c) 14%,rgba(23,12,64,.55));border-left-color:var(--c)}
+
+.kind{font-weight:600;color:var(--c);margin:0 0 .7rem}
+
+.finale{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:6rem clamp(1.25rem,6vw,6rem) 3rem}
 .finale .copy{max-width:43rem}
+.finale h2{font-size:clamp(1.9rem,3.6vw,3.1rem)}
 .base{border-left:3px solid var(--sun);padding-left:1rem;margin:0 0 2rem}
 .base b{color:var(--sun);font-weight:600}
 .pitch{font-size:clamp(1.1rem,1.4vw,1.25rem)}
@@ -70,23 +93,24 @@ footer ul{list-style:none;padding:0;margin:0 0 1.2rem;display:flex;flex-wrap:wra
 footer a{text-decoration:none}
 footer a:hover{color:var(--mist)}
 
-.rail{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:.7rem;list-style:none;margin:0;padding:0}
-.rail a{display:block;width:.6rem;height:.6rem;border-radius:50%;background:var(--c);opacity:.35;transition:transform .2s ease,opacity .2s ease}
-.rail a:hover,.rail a.on{opacity:1;transform:scale(1.7);box-shadow:0 0 14px var(--c)}
-
 @media (max-width:800px){
   .top nav a:not(.btn){display:none}
-  .rail{display:none}
-  .hero{align-items:flex-start;padding-top:6.5rem}
-  .world,.finale{align-items:flex-end;padding-bottom:9vh}
-  .world{min-height:135svh}
+  .stage{align-items:flex-start;padding:6.5rem 1.25rem 6rem}
+  .stage.sel{align-items:flex-end}
+  .index{padding:5rem 1.25rem 2rem}
+  .index .copy{background:rgba(7,4,24,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:1.4rem .9rem;margin:0 -.5rem;border-radius:22px}
+  .list a{grid-template-columns:1fr auto;padding:.5rem .6rem .5rem .8rem}
+  .list .nm{grid-row:auto;font-size:.95rem}
+  .list .kd{text-align:right}
+  .list .ds{grid-column:1/-1;font-size:.88rem}
   .build{grid-template-columns:1fr}
-  .finale{padding-top:52svh}
-  .finale .copy{background:rgba(7,4,24,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:1.5rem 1.25rem;margin:0 -.75rem;border-radius:22px}
+  .finale{padding:5rem 1.25rem 2rem}
+  .finale .copy{background:rgba(7,4,24,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:1.5rem 1.25rem;margin:0 -.5rem;border-radius:22px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .btn,.rail a{transition:none}
+  .btn,.list a{transition:none}
+  .js .pane.on{animation:none}
 }
 </style>
 </head>
@@ -96,39 +120,46 @@ footer a:hover{color:var(--mist)}
 <header class="top">
   <a class="mark" href="#top">Echlon Labs</a>
   <nav aria-label="Main">
-    <a href="#storm">Worlds</a>
+    <a href="#worlds">Worlds</a>
     <a href="#contact">Services</a>
     <a class="btn solid small" href="mailto:hello@echlonlabs.com">Hire the lab</a>
   </nav>
 </header>
 
-<ul class="rail" aria-label="Jump to a project">
-  <li><a href="#storm" title="Storm" aria-label="Storm" style="--c:#F0603A"></a></li>
-  <li><a href="#shield" title="Shield" aria-label="Shield" style="--c:#E0A040"></a></li>
-  <li><a href="#network-3d-live" title="Network 3D Live" aria-label="Network 3D Live" style="--c:#2FD6C8"></a></li>
-  <li><a href="#math-trainer" title="Math Trainer" aria-label="Math Trainer" style="--c:#FF8A3D"></a></li>
-  <li><a href="#echlon-ai" title="Echlon AI" aria-label="Echlon AI" style="--c:#A47BFF"></a></li>
-  <li><a href="#financial-manager" title="Financial Manager" aria-label="Financial Manager" style="--c:#E3C04F"></a></li>
-  <li><a href="#python-trainer" title="Python Trainer" aria-label="Python Trainer" style="--c:#7FD6CC"></a></li>
-  <li><a href="#shippy" title="Shippy" aria-label="Shippy" style="--c:#4FA8F5"></a></li>
-  <li><a href="#kinetipix" title="KinetiPix" aria-label="KinetiPix" style="--c:#F562AE"></a></li>
-  <li><a href="#cv-manager" title="CV Manager" aria-label="CV Manager" style="--c:#B9D4F5"></a></li>
-  <li><a href="#design-maker" title="Design Maker" aria-label="Design Maker" style="--c:#FF8377"></a></li>
-</ul>
-
 <main id="top">
-  <section class="scene hero" data-cam>
-    <div class="copy">
-      <h1>Many worlds,<br>one lab.</h1>
-      <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here: rocky inner worlds, giants, and small worlds out on the edge, with more on the way.</p>
-      <div class="row">
-        <a class="btn solid" href="#storm">Fly through the worlds</a>
-        <a class="btn line" href="#contact">Build one with the lab</a>
+  <section class="stage">
+    <div class="panel copy">
+      <div class="intro">
+        <h1>Many worlds,<br>one lab.</h1>
+        <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here.</p>
+        <div class="row">
+          <a class="btn solid" href="#worlds">See the worlds</a>
+          <a class="btn line" href="#contact">Build one with the lab</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="scene finale" id="contact" data-cam style="--c:#FFC66B">
+  <section class="index" id="worlds">
+    <div class="copy">
+      <h2>The worlds</h2>
+      <ul class="list">
+        <li><a href="https://storm.echlonlabs.com/" data-id="storm" style="--c:#FF9A7A"><span class="nm">Storm</span><span class="kd">Adversary simulation</span><span class="ds">An authorised adversary-simulation toolkit. It runs controlled red-team exercises that test your detection, your response and your people, in scope and with permission.</span></a></li>
+        <li><a href="https://shield.echlonlabs.com/" data-id="shield" style="--c:#F5CB85"><span class="nm">Shield</span><span class="kd">Defensive security</span><span class="ds">A workflow engine for defensive security. It runs your assessments as repeatable workflows and turns raw tool output into prioritised findings you can track.</span></a></li>
+        <li><a href="https://networkanalyzer.echlonlabs.com/" data-id="network-3d-live" style="--c:#7FE6D8"><span class="nm">Network 3D Live</span><span class="kd">Android app</span><span class="ds">See the devices on your Wi-Fi network and watch their traffic, live.</span></a></li>
+        <li><a href="https://studenttrainer.echlonlabs.com/" data-id="math-trainer" style="--c:#FFB07A"><span class="nm">Math Trainer</span><span class="kd">Web app</span><span class="ds">A practice app for school maths.</span></a></li>
+        <li><a href="https://echlonai.echlonlabs.com/" data-id="echlon-ai" style="--c:#C3A6FF"><span class="nm">Echlon AI</span><span class="kd">Web platform</span><span class="ds">A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</span></a></li>
+        <li><a href="https://financialmanager.echlonlabs.com/" data-id="financial-manager" style="--c:#F2DC8A"><span class="nm">Financial Manager</span><span class="kd">Android app</span><span class="ds">A personal finance app that reads Israeli payslip PDFs and keeps your money in one place.</span></a></li>
+        <li><a href="https://pythontrainer.echlonlabs.com/" data-id="python-trainer" style="--c:#A9E8E0"><span class="nm">Python Trainer</span><span class="kd">Web app</span><span class="ds">Practice Python with a tutor that runs on a local language model. Access is by code.</span></a></li>
+        <li><a href="https://shippy.echlonlabs.com/" data-id="shippy" style="--c:#8CC8FF"><span class="nm">Shippy</span><span class="kd">Android app</span><span class="ds">A parcel tracker that reads your orders straight from your AliExpress account. It needs no access to your email.</span></a></li>
+        <li><a href="https://kinetipix.echlonlabs.com/" data-id="kinetipix" style="--c:#FF94C9"><span class="nm">KinetiPix</span><span class="kd">Web app</span><span class="ds">A web app from the lab.</span></a></li>
+        <li><a href="https://cvmanager.echlonlabs.com/" data-id="cv-manager" style="--c:#CFE2FA"><span class="nm">CV Manager</span><span class="kd">Web app</span><span class="ds">A web app for keeping your CVs in order.</span></a></li>
+        <li><a href="https://designmaker.echlonlabs.com/" data-id="design-maker" style="--c:#FFA79E"><span class="nm">Design Maker</span><span class="kd">Web app</span><span class="ds">A web app for making designs.</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="finale" id="contact" style="--c:#FFC66B">
     <div class="copy">
       <h2>Want a world of your own?</h2>
       <p class="pitch">The lab does more than ship apps. It designs the system underneath them, builds the engine that drives it, and tunes it until it can run without a hand on the wheel.</p>
@@ -145,114 +176,6 @@ footer a:hover{color:var(--mist)}
       </dl>
       <p class="base"><b>Quality is the base.</b> Whatever the job, nothing ships until it has been reviewed and tested.</p>
       <p>Tell the lab what you need:</p>
-      <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
-    </div>
-  </section>
-
-  <section class="scene world" id="storm" data-cam style="--c:#FF9A7A">
-    <div class="copy">
-      <p class="kind">Adversary simulation</p>
-      <h2>Storm</h2>
-      <p>An authorised adversary-simulation toolkit. It runs controlled red-team exercises that test your detection, your response and your people, in scope and with permission.</p>
-      <a class="btn line" href="https://storm.echlonlabs.com/">Visit Storm</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="shield" data-cam style="--c:#F5CB85">
-    <div class="copy">
-      <p class="kind">Defensive security</p>
-      <h2>Shield</h2>
-      <p>A workflow engine for defensive security. It runs your assessments as repeatable workflows and turns raw tool output into prioritised findings you can track.</p>
-      <a class="btn line" href="https://shield.echlonlabs.com/">Visit Shield</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="network-3d-live" data-cam style="--c:#7FE6D8">
-    <div class="copy">
-      <p class="kind">Android app</p>
-      <h2>Network 3D Live</h2>
-      <p>See the devices on your Wi-Fi network and watch their traffic, live.</p>
-      <a class="btn line" href="https://networkanalyzer.echlonlabs.com/">Visit Network 3D Live</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="math-trainer" data-cam style="--c:#FFB07A">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>Math Trainer</h2>
-      <p>A practice app for school maths.</p>
-      <a class="btn line" href="https://studenttrainer.echlonlabs.com/">Visit Math Trainer</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="echlon-ai" data-cam style="--c:#C3A6FF">
-    <div class="copy">
-      <p class="kind">Web platform, the lab's flagship and its largest world</p>
-      <h2>Echlon AI</h2>
-      <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
-      <p class="more">Fifty-two roles across eight departments sit behind one request box. A named reviewer signs off each piece of work, and real lint and test commands decide whether it passes.</p>
-      <a class="btn line" href="https://echlonai.echlonlabs.com/">Visit Echlon AI</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="financial-manager" data-cam style="--c:#F2DC8A">
-    <div class="copy">
-      <p class="kind">Android app</p>
-      <h2>Financial Manager</h2>
-      <p>A personal finance app that reads Israeli payslip PDFs and keeps your money in one place.</p>
-      <a class="btn line" href="https://financialmanager.echlonlabs.com/">Visit Financial Manager</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="python-trainer" data-cam style="--c:#A9E8E0">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>Python Trainer</h2>
-      <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
-      <a class="btn line" href="https://pythontrainer.echlonlabs.com/">Visit Python Trainer</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="shippy" data-cam style="--c:#8CC8FF">
-    <div class="copy">
-      <p class="kind">Android app</p>
-      <h2>Shippy</h2>
-      <p>A parcel tracker that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
-      <a class="btn line" href="https://shippy.echlonlabs.com/">Visit Shippy</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="kinetipix" data-cam style="--c:#FF94C9">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>KinetiPix</h2>
-      <p>A web app from the lab.</p>
-      <a class="btn line" href="https://kinetipix.echlonlabs.com/">Visit KinetiPix</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="cv-manager" data-cam style="--c:#CFE2FA">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>CV Manager</h2>
-      <p>A web app for keeping your CVs in order.</p>
-      <a class="btn line" href="https://cvmanager.echlonlabs.com/">Visit CV Manager</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="design-maker" data-cam style="--c:#FFA79E">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>Design Maker</h2>
-      <p>A web app for making designs.</p>
-      <a class="btn line" href="https://designmaker.echlonlabs.com/">Visit Design Maker</a>
-    </div>
-  </section>
-
-  <section class="scene outro" id="start" data-cam style="--c:#FFC66B">
-    <div class="copy">
-      <h2>Your world could be next.</h2>
-      <p>Tell the lab what you need, and it will tell you how it would build it.</p>
       <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
     </div>
   </section>
@@ -430,25 +353,22 @@ function view(X,Y,Z){
 function proj(X,Y,Z){var v=view(X,Y,Z);if(v.z<2)return null;var s=F/v.z;return{x:W/2+cam.ox+v.x*s,y:H/2+cam.oy+v.y*s,s:s,z:v.z}}
 
 function key(i){
-  if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.27),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.24,oy:mobile?H*0.2:-H*0.08,pl:false};
-  if(i===1) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.17,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.31,oy:mobile?-H*0.22:0,pl:false};
-  if(i>P.length+1) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.5:W*0.24),pitch:0.36,yaw:2.9+t*0.012,ox:mobile?0:W*0.27,oy:mobile?-H*0.18:-H*0.05,pl:false};
-  var p=P[i-2],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27)*(0.72+0.5*p.R/23);
-  return{tx:q.x,tz:q.z,dist:F*p.R/px,pitch:0.32,yaw:0.55-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
+  if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.27),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.24,oy:mobile?H*0.16:-H*0.1};
+  return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.17,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.31,oy:mobile?-H*0.22:0};
 }
-var scenes=[].slice.call(document.querySelectorAll("[data-cam]")), centers=[], prog=0;
-function measure(){centers=scenes.map(function(s){return s.offsetTop+s.offsetHeight/2})}
-function progress(){
-  var mid=scrollY+H/2,n=centers.length; if(mid<=centers[0])return 0; if(mid>=centers[n-1])return n-1;
-  for(var i=0;i<n-1;i++) if(mid<centers[i+1]) return i+(mid-centers[i])/(centers[i+1]-centers[i]);
-  return n-1;
+function keyP(i){
+  var p=P[i],q=pos(p),px=Math.min(W,H)*(mobile?0.17:0.26)*(0.72+0.5*p.R/23);
+  return{tx:q.x,tz:q.z,dist:F*p.R/px,pitch:0.32,yaw:0.55-q.a,ox:mobile?0:W*0.24,oy:mobile?-H*0.29:0};
 }
+var sel=-1, clock=0, secW=document.getElementById("worlds"), secC=document.getElementById("contact");
+function keyI(){return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.46:Math.min(W*0.2,H*0.43)),pitch:1.02,yaw:0.95+t*0.012,ox:mobile?0:W*0.26,oy:mobile?-H*0.05:H*0.02}}
+function mix(a,b,e){return{tx:lerp(a.tx,b.tx,e),tz:lerp(a.tz,b.tz,e),dist:Math.exp(lerp(Math.log(a.dist),Math.log(b.dist),e)),
+  pitch:lerp(a.pitch,b.pitch,e),yaw:a.yaw+wrap(b.yaw-a.yaw)*e,ox:lerp(a.ox,b.ox,e),oy:lerp(a.oy,b.oy,e)}}
+function scrollE(){return clamp(scrollY/Math.max(1,secC.offsetTop),0,1)}
 function desired(){
-  var i=Math.floor(prog),f=prog-i,a=key(i),b=key(i+1),e=smooth(clamp((f-0.28)/0.44,0,1));
-  if(f===0) return a;
-  var arc=(a.pl&&b.pl)?1+Math.sin(Math.PI*e)*1.6:1;
-  return{tx:lerp(a.tx,b.tx,e),tz:lerp(a.tz,b.tz,e),dist:Math.exp(lerp(Math.log(a.dist),Math.log(b.dist),e))*arc,
-    pitch:lerp(a.pitch,b.pitch,e),yaw:a.yaw+wrap(b.yaw-a.yaw)*e,ox:lerp(a.ox,b.ox,e),oy:lerp(a.oy,b.oy,e)};
+  var w=secW.offsetTop, c=secC.offsetTop, y=scrollY;
+  if(y<=w) return mix(key(0),keyI(),smooth(clamp(y/(w*0.85),0,1)));
+  return mix(keyI(),key(1),smooth(clamp((y-w-(c-w-H)*1)/(H*0.85),0,1)));
 }
 
 /* ---------- drawing ---------- */
@@ -572,7 +492,7 @@ var hits=[], hover=-1, lastY=0, vel=0, last=0;
 function frame(now){
   var dt=Math.min(0.05,(now-last)/1000||0.016); last=now;
   if(!reduce) t+=dt;
-  prog=progress();
+  clock=now/1000;
   var d=desired(), k=reduce?1:1-Math.exp(-dt*5.5);
   cam.tx+=(d.tx-cam.tx)*k;cam.tz+=(d.tz-cam.tz)*k;cam.dist+=(d.dist-cam.dist)*k;cam.pitch+=(d.pitch-cam.pitch)*k;
   cam.yaw+=wrap(d.yaw-cam.yaw)*k;cam.ox+=(d.ox-cam.ox)*k;cam.oy+=(d.oy-cam.oy)*k;
@@ -581,7 +501,7 @@ function frame(now){
   cx.setTransform(DPR,0,0,DPR,0,0);
   var bg=cx.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#070418");bg.addColorStop(1,"#170C40");
   cx.fillStyle=bg;cx.fillRect(0,0,W,H);
-  var nx=Math.sin(cam.yaw*0.5)*W*0.12, ny=-prog/(centers.length-1||1)*H*0.25;
+  var nx=Math.sin(cam.yaw*0.5)*W*0.12, ny=-scrollE()*H*0.2;
   cx.drawImage(neb,-W*0.2+nx,-H*0.15+ny,W*1.4,H*1.5);
 
   var i,s,streak;
@@ -606,7 +526,7 @@ function frame(now){
   /* orbits */
   cx.lineWidth=1;
   for(i=0;i<P.length;i++){
-    cx.strokeStyle=i===hover?hexA(P[i].c[1],0.7):"rgba(180,171,221,0.14)";
+    cx.strokeStyle=(i===hover||i===sel)?hexA(P[i].c[1],0.7):"rgba(180,171,221,0.14)";
     cx.beginPath();var pen=false;
     for(var j=0;j<=128;j++){var a=j/128*TAU,q=proj(Math.cos(a)*P[i].orbit,0,Math.sin(a)*P[i].orbit);
       if(!q){pen=false;continue}
@@ -638,38 +558,42 @@ function frame(now){
     if(b.q.x<-r*3||b.q.x>W+r*3||b.q.y<-r*3||b.q.y>H+r*3)continue;
     planet(P[b.i],b.q.x,b.q.y,r,b.L);
     hits.push({i:b.i,x:b.q.x,y:b.q.y,r:r});
-    if(ov>0.05&&(!mobile||b.i===hover)){
-      cx.font=(b.i===hover?"600 14px ":"500 12.5px ")+'"Instrument Sans",system-ui,sans-serif';
-      cx.fillStyle=b.i===hover?"#FFFFFF":"rgba(237,232,255,"+(ov*0.78)+")";
+    if(ov>0.05&&(!mobile||(b.i===hover||b.i===sel))){
+      cx.font=((b.i===hover||b.i===sel)?"600 14px ":"500 12.5px ")+'"Instrument Sans",system-ui,sans-serif';
+      cx.fillStyle=(b.i===hover||b.i===sel)?"#FFFFFF":"rgba(237,232,255,"+(ov*0.78)+")";
       cx.fillText(P[b.i].n,b.q.x+r+9,b.q.y+4);
     }
-    if(b.i===hover){cx.strokeStyle=hexA(P[b.i].c[0],0.8);cx.lineWidth=1.5;cx.beginPath();cx.arc(b.q.x,b.q.y,r+6,0,TAU);cx.stroke();}
+    if((b.i===hover||b.i===sel)){cx.strokeStyle=hexA(P[b.i].c[0],0.8);cx.lineWidth=1.5;cx.beginPath();cx.arc(b.q.x,b.q.y,r+6,0,TAU);cx.stroke();}
   }
 
-  var on=Math.round(prog)-2;
-  if(on!==frame.on){frame.on=on;for(i=0;i<dots.length;i++)dots[i].classList.toggle("on",i===on);}
   requestAnimationFrame(frame);
 }
 
 /* ---------- interaction ---------- */
-var dots=[].slice.call(document.querySelectorAll(".rail a"));
+var rowsEl=[].slice.call(document.querySelectorAll(".list a")), ids=rowsEl.map(function(r){return r.getAttribute("data-id")});
+document.documentElement.className="js";
+function mark(i){sel=i;rowsEl.forEach(function(r,j){r.classList.toggle("on",j===i)})}
+rowsEl.forEach(function(r,i){
+  r.addEventListener("pointerenter",function(){mark(i)});r.addEventListener("focus",function(){mark(i)});
+  r.addEventListener("pointerleave",function(){mark(-1)});r.addEventListener("blur",function(){mark(-1)});
+});
+function route(){}
 function pick(e){
   var best=-1,bd=1e9;
   for(var i=0;i<hits.length;i++){var h=hits[i],d=Math.hypot(e.clientX-h.x,e.clientY-h.y);if(d<Math.max(h.r+8,20)&&d<bd){bd=d;best=h.i}}
   return best;
 }
-cv.addEventListener("pointermove",function(e){hover=pick(e);cv.style.cursor=hover>=0?"pointer":"default"});
+cv.addEventListener("pointermove",function(e){hover=pick(e);rowsEl.forEach(function(r,j){r.classList.toggle("on",j===hover)});cv.style.cursor=hover>=0?"pointer":"default"});
 cv.addEventListener("pointerleave",function(){hover=-1});
-cv.addEventListener("click",function(e){var i=pick(e);if(i>=0)scenes[i+2].scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})});
+cv.addEventListener("click",function(e){var i=pick(e);if(i>=0&&rowsEl[i]){secW.scrollIntoView({behavior:reduce?"auto":"smooth"});rowsEl[i].focus({preventScroll:true})}});
 
 function resize(){
   W=innerWidth;H=innerHeight;mobile=W<=800;DPR=Math.min(devicePixelRatio||1,2);
   cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
-  makeStars();measure();
+  makeStars();
 }
 addEventListener("resize",resize);
-if(window.ResizeObserver) new ResizeObserver(measure).observe(document.querySelector("main"));
-makeNebula();resize();prog=progress();
+makeNebula();resize();
 var d0=desired();for(var kk in cam)cam[kk]=d0[kk];
 lastY=scrollY;
 requestAnimationFrame(frame);
