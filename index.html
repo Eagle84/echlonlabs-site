@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Echlon Labs — Software, made in one lab</title>
+<meta name="description" content="Echlon Labs is an independent software lab. Android apps, web tools, security testing and an AI engine that runs a software company.">
+<meta property="og:title" content="Echlon Labs">
+<meta property="og:description" content="An independent software lab: Android apps, web tools, security testing and an AI engine that runs a software company.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://echlonlabs.com/">
+<meta name="theme-color" content="#E8EDF1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#E8EDF1;
+  --ink:#0F1B2D;
+  --slate:#4A5668;
+  --rule:rgba(15,27,45,.22);
+  --signal:#2438F0;
+  --max:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:1.0625rem;line-height:1.6;font-variation-settings:"opsz" 14;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:2px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+
+/* header */
+header{padding:1.5rem 0}
+header .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.mark{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none;font-stretch:85%}
+nav{display:flex;gap:1.75rem}
+nav a{text-decoration:none;color:var(--slate);font-size:1rem;white-space:nowrap}
+.mark{white-space:nowrap}
+nav a:hover{color:var(--signal);text-decoration:underline;text-underline-offset:.3em}
+
+/* hero */
+.hero{padding:clamp(3rem,9vw,7rem) 0 clamp(2.5rem,5vw,4rem)}
+h1{
+  margin:0;font-weight:760;font-stretch:75%;
+  font-size:clamp(3.25rem,10.5vw,9rem);line-height:.92;letter-spacing:-.035em;
+  font-variation-settings:"opsz" 96;max-width:15ch;
+}
+.lede{max-width:34rem;margin:2rem 0 0;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:var(--ink)}
+
+/* index of work */
+.work{padding-bottom:clamp(3rem,7vw,6rem)}
+.work h2,.section h2{
+  margin:0 0 1.25rem;font-size:1rem;font-weight:600;color:var(--slate);letter-spacing:0;
+}
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.row{
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) minmax(0,.8fr);
+  gap:1rem 2rem;align-items:baseline;padding:1.35rem 0;border-bottom:1px solid var(--rule);
+  transition:background-color .15s,padding .15s;
+}
+.row h3{margin:0;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:680;letter-spacing:-.02em;line-height:1.1;font-stretch:85%;font-variation-settings:"opsz" 48}
+.row h3 a{text-decoration:none}
+.row h3 a::after{content:"";position:absolute;inset:0}
+.row{position:relative}
+.row p{margin:0;color:var(--ink);max-width:40rem}
+.row .kind{color:var(--slate);font-size:.95rem}
+.row .kind a{position:relative;z-index:1}
+.row:hover,.row:focus-within{background:var(--ink);color:var(--paper);padding-left:1rem;padding-right:1rem}
+.row:hover p,.row:focus-within p{color:var(--paper)}
+.row:hover .kind,.row:focus-within .kind{color:#B9C4D4}
+.row:hover h3 a,.row:focus-within h3 a{color:var(--paper)}
+.row:focus-within{outline:3px solid var(--signal);outline-offset:-3px}
+.row:focus-within :focus-visible{outline:none}
+
+@keyframes settle{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .rows .row{animation:settle .6s cubic-bezier(.2,.7,.2,1) both}
+  .rows .row:nth-child(1){animation-delay:.05s}
+  .rows .row:nth-child(2){animation-delay:.12s}
+  .rows .row:nth-child(3){animation-delay:.19s}
+  .rows .row:nth-child(4){animation-delay:.26s}
+  .rows .row:nth-child(5){animation-delay:.33s}
+  .rows .row:nth-child(6){animation-delay:.40s}
+  .rows .row:nth-child(7){animation-delay:.47s}
+  .rows .row:nth-child(8){animation-delay:.54s}
+  .rows .row:nth-child(9){animation-delay:.61s}
+  .rows .row:nth-child(10){animation-delay:.68s}
+}
+
+/* sections */
+.section{padding:clamp(3rem,7vw,6rem) 0;border-top:1px solid var(--ink)}
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:2rem clamp(2rem,6vw,6rem)}
+.section h3.big{margin:0;font-size:clamp(2rem,4.2vw,3.4rem);font-weight:720;font-stretch:80%;letter-spacing:-.03em;line-height:1.02;font-variation-settings:"opsz" 72}
+.section p{margin:0 0 1.1rem;max-width:38rem}
+.steps{margin:1.5rem 0 0;padding:0;list-style:none;counter-reset:s;max-width:38rem}
+.steps li{counter-increment:s;display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;padding:.8rem 0;border-top:1px solid var(--rule)}
+.steps li::before{content:counter(s);font-weight:700;color:var(--signal);font-variant-numeric:tabular-nums}
+.steps li:last-child{border-bottom:1px solid var(--rule)}
+.addr{margin:0;padding:0;list-style:none;columns:2;column-gap:2rem;max-width:34rem}
+.addr li{padding:.35rem 0;break-inside:avoid}
+.addr a{color:var(--slate)}
+.addr a:hover{color:var(--signal)}
+.contact-main{font-size:clamp(1.6rem,3.6vw,2.8rem);font-weight:700;font-stretch:85%;letter-spacing:-.025em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.2em}
+.contact-main:hover{color:var(--signal)}
+
+footer{padding:2rem 0 3rem;border-top:1px solid var(--ink);color:var(--slate);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+@media (max-width:760px){
+  .row{grid-template-columns:1fr;gap:.35rem}
+  .cols{grid-template-columns:1fr}
+  .addr{columns:1}
+  nav{gap:1.1rem}
+  nav a[href="#echlon-ai"]{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="mark" href="#top">Echlon Labs</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#echlon-ai">Echlon AI</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <h1>Software, made in one lab.</h1>
+      <p class="lede">Echlon Labs is an independent software lab. It builds Android apps, web tools, security testing software, and an AI engine that runs a software company.</p>
+    </div>
+  </section>
+
+  <section class="work" id="work" aria-labelledby="work-h">
+    <div class="wrap">
+      <h2 id="work-h">What the lab has built</h2>
+      <ul class="rows">
+        <li class="row">
+          <h3><a href="https://echlonai.echlonlabs.com/">Echlon AI</a></h3>
+          <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
+          <span class="kind">Web platform</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://shippy.echlonlabs.com/">Shippy</a></h3>
+          <p>A parcel tracker for Android that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
+          <span class="kind">Android</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://financialmanager.echlonlabs.com/">Financial Manager</a></h3>
+          <p>A personal finance app for Android that reads Israeli payslip PDFs and keeps your money in one place.</p>
+          <span class="kind">Android</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></h3>
+          <p>See the devices on your Wi-Fi network and watch their traffic, live.</p>
+          <span class="kind">Android</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></h3>
+          <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
+          <span class="kind">Web</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></h3>
+          <p>A practice app for school maths.</p>
+          <span class="kind">Web</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://shield.echlonlabs.com/">StormShield</a></h3>
+          <p>Security testing tools in two parts: shield and storm.</p>
+          <span class="kind">Security</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://kinetipix.echlonlabs.com/">KinetiPix</a></h3>
+          <p>A web app from the lab.</p>
+          <span class="kind">Web</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://cvmanager.echlonlabs.com/">CV Manager</a></h3>
+          <p>A web app for keeping your CVs in order.</p>
+          <span class="kind">Web</span>
+        </li>
+        <li class="row">
+          <h3><a href="https://designmaker.echlonlabs.com/">Design Maker</a></h3>
+          <p>A web app for making designs.</p>
+          <span class="kind">Web</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="echlon-ai" aria-labelledby="ai-h">
+    <div class="wrap cols">
+      <h3 class="big" id="ai-h">Echlon AI is the lab's flagship.</h3>
+      <div>
+        <p>Coding assistants help one person type faster. Echlon AI works like an organisation: it plans the work, splits it up, has it reviewed, and refuses to ship something broken.</p>
+        <p>Fifty-two roles across eight departments sit behind one request box. Each role names the reviewer who signs its work off, and results are checked against written acceptance criteria before you see them.</p>
+        <ol class="steps">
+          <li>Describe the goal in one sentence.</li>
+          <li>It routes to the department that owns the work.</li>
+          <li>You approve the plan.</li>
+          <li>The team builds, and a named reviewer checks the result.</li>
+          <li>Real lint and test commands decide whether it passes.</li>
+          <li>You get the code.</li>
+        </ol>
+        <p style="margin-top:1.5rem"><a href="https://echlonai.echlonlabs.com/">Visit the Echlon AI site</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap cols">
+      <h3 class="big" id="about-h">An independent lab, shipping its own products.</h3>
+      <div>
+        <p>Echlon Labs makes software it wants to use. Each product has its own address, its own page and its own inbox, so you can reach the people behind the thing you are using.</p>
+        <p>The lab works across Android, the web and self-hosted tools, and runs much of its own infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact" aria-labelledby="contact-h">
+    <div class="wrap cols">
+      <h3 class="big" id="contact-h">Get in touch.</h3>
+      <div>
+        <p><a class="contact-main" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
+        <p style="margin-top:1.5rem">Writing about one product? Use its own address:</p>
+        <ul class="addr">
+          <li><a href="mailto:echlonai@echlonlabs.com">echlonai@echlonlabs.com</a></li>
+          <li><a href="mailto:shippy@echlonlabs.com">shippy@echlonlabs.com</a></li>
+          <li><a href="mailto:financialmanager@echlonlabs.com">financialmanager@echlonlabs.com</a></li>
+          <li><a href="mailto:networkanalyzer@echlonlabs.com">networkanalyzer@echlonlabs.com</a></li>
+          <li><a href="mailto:pythontrainer@echlonlabs.com">pythontrainer@echlonlabs.com</a></li>
+          <li><a href="mailto:studenttrainer@echlonlabs.com">studenttrainer@echlonlabs.com</a></li>
+          <li><a href="mailto:shield@echlonlabs.com">shield@echlonlabs.com</a></li>
+          <li><a href="mailto:storm@echlonlabs.com">storm@echlonlabs.com</a></li>
+          <li><a href="mailto:kinetipix@echlonlabs.com">kinetipix@echlonlabs.com</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Echlon Labs</span>
+    <span>echlonlabs.com</span>
+  </div>
+</footer>
+</body>
+</html>
