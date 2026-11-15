@@ -53,11 +53,12 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.9rem)
 .world .btn{margin-top:.6rem}
 
 .finale{min-height:120vh;min-height:120svh}
-.finale .copy{max-width:36rem}
-.build{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:.9rem}
-.build li{padding-left:1.4rem;position:relative}
-.build li::before{content:"";position:absolute;left:0;top:.55em;width:.6rem;height:.6rem;border-radius:50%;background:var(--sun);box-shadow:0 0 12px var(--sun)}
-.build b{font-weight:600}
+.finale .copy{max-width:43rem}
+.pitch{font-size:clamp(1.1rem,1.4vw,1.25rem)}
+.build{margin:1.8rem 0 2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2.2rem}
+.build div{border-top:1px solid rgba(255,198,107,.45);padding-top:.8rem}
+.build dt{font-family:var(--display);font-weight:500;font-size:.98rem;line-height:1.25;margin-bottom:.4rem;color:var(--sun)}
+.build dd{margin:0;font-size:.98rem;color:var(--mist)}
 .mail{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,2.1vw,1.5rem);text-decoration-color:var(--sun);text-underline-offset:.3em}
 
 footer{position:relative;z-index:1;padding:2.5rem clamp(1.25rem,6vw,6rem) 2rem;background:linear-gradient(transparent,rgba(7,4,24,.92) 40%);color:var(--haze);font-size:.92rem}
@@ -75,6 +76,9 @@ footer a:hover{color:var(--mist)}
   .hero{align-items:flex-start;padding-top:6.5rem}
   .world,.finale{align-items:flex-end;padding-bottom:9vh}
   .world{min-height:135svh}
+  .build{grid-template-columns:1fr}
+  .finale{padding-top:52svh}
+  .finale .copy{background:rgba(7,4,24,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:1.5rem 1.25rem;margin:0 -.75rem;border-radius:22px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -213,13 +217,15 @@ footer a:hover{color:var(--mist)}
   <section class="scene finale" id="contact" data-cam style="--c:#FFC66B">
     <div class="copy">
       <h2>Want a world of your own?</h2>
-      <p>The lab that built these ten can build yours, from the first sketch to the day it goes live.</p>
-      <ul class="build">
-        <li><b>Android apps</b> like Shippy and Financial Manager.</li>
-        <li><b>Web apps and tools</b> that ship on their own address.</li>
-        <li><b>AI agents</b> that plan, build and check their own work.</li>
-        <li><b>Security testing</b> for the software you already run.</li>
-      </ul>
+      <p class="pitch">The lab does more than ship apps. It designs the system underneath them, builds the engine that drives it, and tunes it until it can run without a hand on the wheel.</p>
+      <dl class="build">
+        <div><dt>Systems that run themselves</dt><dd>Software that plans its own work, checks the result against written criteria, and refuses to ship what fails.</dd></div>
+        <div><dt>Engines, built from scratch</dt><dd>The core under a product: the planner, the pipeline, the reviewer. Echlon AI is one the lab runs every day.</dd></div>
+        <div><dt>AI optimisation</dt><dd>The right model for each job, prompted and measured, with local models on your own hardware where privacy or cost calls for it.</dd></div>
+        <div><dt>Architecture</dt><dd>The structure before the code: what talks to what, what fails safely, and what it costs to keep running.</dd></div>
+        <div><dt>Android and web apps</dt><dd>Complete products on their own address, like Shippy, Financial Manager and Python Trainer.</dd></div>
+        <div><dt>Security and infrastructure</dt><dd>Testing tools for the software you already run, and self-hosted setups the lab operates itself.</dd></div>
+      </dl>
       <p>Tell the lab what you need:</p>
       <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
     </div>
@@ -307,7 +313,7 @@ function proj(X,Y,Z){var v=view(X,Y,Z);if(v.z<2)return null;var s=F/v.z;return{x
 
 function key(i){
   if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.31),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.2,oy:mobile?H*0.2:-H*0.08,pl:false};
-  if(i>P.length) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.26,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.22,oy:mobile?-H*0.22:0,pl:false};
+  if(i>P.length) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.2,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.265,oy:mobile?-H*0.22:0,pl:false};
   var p=P[i-1],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27);
   return{tx:q.x,tz:q.z,dist:F*12/px,pitch:0.32,yaw:0.9-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
 }
