@@ -53,6 +53,7 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.9rem)
 .world .btn{margin-top:.6rem}
 
 .finale{min-height:120vh;min-height:120svh}
+.outro .copy{max-width:40rem}
 .finale .copy{max-width:43rem}
 .pitch{font-size:clamp(1.1rem,1.4vw,1.25rem)}
 .build{margin:1.8rem 0 2.2rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 2.2rem}
@@ -92,21 +93,21 @@ footer a:hover{color:var(--mist)}
 <header class="top">
   <a class="mark" href="#top">Echlon Labs</a>
   <nav aria-label="Main">
-    <a href="#echlon-ai">Worlds</a>
+    <a href="#storm">Worlds</a>
     <a href="#contact">Services</a>
     <a class="btn solid small" href="mailto:hello@echlonlabs.com">Hire the lab</a>
   </nav>
 </header>
 
 <ul class="rail" aria-label="Jump to a project">
-  <li><a href="#echlon-ai" title="Echlon AI" aria-label="Echlon AI" style="--c:#A47BFF"></a></li>
-  <li><a href="#shippy" title="Shippy" aria-label="Shippy" style="--c:#4FA8F5"></a></li>
-  <li><a href="#financial-manager" title="Financial Manager" aria-label="Financial Manager" style="--c:#4FCB8C"></a></li>
+  <li><a href="#storm" title="Storm" aria-label="Storm" style="--c:#F0603A"></a></li>
+  <li><a href="#shield" title="Shield" aria-label="Shield" style="--c:#E0A040"></a></li>
   <li><a href="#network-3d-live" title="Network 3D Live" aria-label="Network 3D Live" style="--c:#2FD6C8"></a></li>
-  <li><a href="#python-trainer" title="Python Trainer" aria-label="Python Trainer" style="--c:#F5BE3B"></a></li>
-  <li><a href="#math-trainer" title="Math Trainer" aria-label="Math Trainer" style="--c:#FF9A57"></a></li>
-  <li><a href="#shield" title="Shield" aria-label="Shield" style="--c:#7E99F0"></a></li>
-  <li><a href="#storm" title="Storm" aria-label="Storm" style="--c:#F0685A"></a></li>
+  <li><a href="#math-trainer" title="Math Trainer" aria-label="Math Trainer" style="--c:#FF8A3D"></a></li>
+  <li><a href="#echlon-ai" title="Echlon AI" aria-label="Echlon AI" style="--c:#A47BFF"></a></li>
+  <li><a href="#financial-manager" title="Financial Manager" aria-label="Financial Manager" style="--c:#E3C04F"></a></li>
+  <li><a href="#python-trainer" title="Python Trainer" aria-label="Python Trainer" style="--c:#7FD6CC"></a></li>
+  <li><a href="#shippy" title="Shippy" aria-label="Shippy" style="--c:#4FA8F5"></a></li>
   <li><a href="#kinetipix" title="KinetiPix" aria-label="KinetiPix" style="--c:#F562AE"></a></li>
   <li><a href="#cv-manager" title="CV Manager" aria-label="CV Manager" style="--c:#B9D4F5"></a></li>
   <li><a href="#design-maker" title="Design Maker" aria-label="Design Maker" style="--c:#FF8377"></a></li>
@@ -116,57 +117,55 @@ footer a:hover{color:var(--mist)}
   <section class="scene hero" data-cam>
     <div class="copy">
       <h1>Eleven worlds,<br>one lab.</h1>
-      <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here: Android apps, web tools, security software, and an AI engine that runs a whole software company.</p>
+      <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here: four rocky inner worlds, four giants, and three small worlds out on the edge.</p>
       <div class="row">
-        <a class="btn solid" href="#echlon-ai">Fly through the worlds</a>
+        <a class="btn solid" href="#storm">Fly through the worlds</a>
         <a class="btn line" href="#contact">Build one with the lab</a>
       </div>
     </div>
   </section>
 
-  <section class="scene world" id="echlon-ai" data-cam style="--c:#C3A6FF">
+  <section class="scene finale" id="contact" data-cam style="--c:#FFC66B">
     <div class="copy">
-      <p class="kind">Web platform, the lab's flagship</p>
-      <h2>Echlon AI</h2>
-      <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
-      <p class="more">Fifty-two roles across eight departments sit behind one request box. A named reviewer signs off each piece of work, and real lint and test commands decide whether it passes.</p>
-      <a class="btn line" href="https://echlonai.echlonlabs.com/">Visit Echlon AI</a>
+      <h2>Want a world of your own?</h2>
+      <p class="pitch">The lab does more than ship apps. It designs the system underneath them, builds the engine that drives it, and tunes it until it can run without a hand on the wheel.</p>
+      <dl class="build">
+        <div><dt>Systems that run themselves</dt><dd>Software that plans its own work, checks the result against written criteria, and refuses to ship what fails.</dd></div>
+        <div><dt>Engines, built from scratch</dt><dd>The core under a product: the planner, the pipeline, the reviewer. Echlon AI is one the lab runs every day.</dd></div>
+        <div><dt>AI optimisation</dt><dd>The right model for each job, prompted and measured, with local models on your own hardware where privacy or cost calls for it.</dd></div>
+        <div><dt>Architecture</dt><dd>The structure before the code: what talks to what, what fails safely, and what it costs to keep running.</dd></div>
+        <div><dt>Android and web apps</dt><dd>Complete products on their own address, like Shippy, Financial Manager and Python Trainer.</dd></div>
+        <div><dt>Security and infrastructure</dt><dd>Testing tools for the software you already run, and self-hosted setups the lab operates itself.</dd></div>
+      </dl>
+      <p>Tell the lab what you need:</p>
+      <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
     </div>
   </section>
 
-  <section class="scene world" id="shippy" data-cam style="--c:#8CC8FF">
+  <section class="scene world" id="storm" data-cam style="--c:#FF9A7A">
     <div class="copy">
-      <p class="kind">Android app</p>
-      <h2>Shippy</h2>
-      <p>A parcel tracker that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
-      <a class="btn line" href="https://shippy.echlonlabs.com/">Visit Shippy</a>
+      <p class="kind">Adversary simulation</p>
+      <h2>Storm</h2>
+      <p>An authorised adversary-simulation toolkit. It runs controlled red-team exercises that test your detection, your response and your people, in scope and with permission.</p>
+      <a class="btn line" href="https://storm.echlonlabs.com/">Visit Storm</a>
     </div>
   </section>
 
-  <section class="scene world" id="financial-manager" data-cam style="--c:#7FE3B0">
+  <section class="scene world" id="shield" data-cam style="--c:#F5CB85">
     <div class="copy">
-      <p class="kind">Android app</p>
-      <h2>Financial Manager</h2>
-      <p>A personal finance app that reads Israeli payslip PDFs and keeps your money in one place.</p>
-      <a class="btn line" href="https://financialmanager.echlonlabs.com/">Visit Financial Manager</a>
+      <p class="kind">Defensive security</p>
+      <h2>Shield</h2>
+      <p>A workflow engine for defensive security. It runs your assessments as repeatable workflows and turns raw tool output into prioritised findings you can track.</p>
+      <a class="btn line" href="https://shield.echlonlabs.com/">Visit Shield</a>
     </div>
   </section>
 
-  <section class="scene world" id="network-3d-live" data-cam style="--c:#6BEADF">
+  <section class="scene world" id="network-3d-live" data-cam style="--c:#7FE6D8">
     <div class="copy">
       <p class="kind">Android app</p>
       <h2>Network 3D Live</h2>
       <p>See the devices on your Wi-Fi network and watch their traffic, live.</p>
       <a class="btn line" href="https://networkanalyzer.echlonlabs.com/">Visit Network 3D Live</a>
-    </div>
-  </section>
-
-  <section class="scene world" id="python-trainer" data-cam style="--c:#FFD466">
-    <div class="copy">
-      <p class="kind">Web app</p>
-      <h2>Python Trainer</h2>
-      <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
-      <a class="btn line" href="https://pythontrainer.echlonlabs.com/">Visit Python Trainer</a>
     </div>
   </section>
 
@@ -179,21 +178,40 @@ footer a:hover{color:var(--mist)}
     </div>
   </section>
 
-  <section class="scene world" id="shield" data-cam style="--c:#A9BCFF">
+  <section class="scene world" id="echlon-ai" data-cam style="--c:#C3A6FF">
     <div class="copy">
-      <p class="kind">Defensive security</p>
-      <h2>Shield</h2>
-      <p>A workflow engine for defensive security. It runs your assessments as repeatable workflows and turns raw tool output into prioritised findings you can track.</p>
-      <a class="btn line" href="https://shield.echlonlabs.com/">Visit Shield</a>
+      <p class="kind">Web platform, the lab's flagship and its largest world</p>
+      <h2>Echlon AI</h2>
+      <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
+      <p class="more">Fifty-two roles across eight departments sit behind one request box. A named reviewer signs off each piece of work, and real lint and test commands decide whether it passes.</p>
+      <a class="btn line" href="https://echlonai.echlonlabs.com/">Visit Echlon AI</a>
     </div>
   </section>
 
-  <section class="scene world" id="storm" data-cam style="--c:#FF9A8A">
+  <section class="scene world" id="financial-manager" data-cam style="--c:#F2DC8A">
     <div class="copy">
-      <p class="kind">Adversary simulation</p>
-      <h2>Storm</h2>
-      <p>An authorised adversary-simulation toolkit. It runs controlled red-team exercises that test your detection, your response and your people, in scope and with permission.</p>
-      <a class="btn line" href="https://storm.echlonlabs.com/">Visit Storm</a>
+      <p class="kind">Android app</p>
+      <h2>Financial Manager</h2>
+      <p>A personal finance app that reads Israeli payslip PDFs and keeps your money in one place.</p>
+      <a class="btn line" href="https://financialmanager.echlonlabs.com/">Visit Financial Manager</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="python-trainer" data-cam style="--c:#A9E8E0">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>Python Trainer</h2>
+      <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
+      <a class="btn line" href="https://pythontrainer.echlonlabs.com/">Visit Python Trainer</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="shippy" data-cam style="--c:#8CC8FF">
+    <div class="copy">
+      <p class="kind">Android app</p>
+      <h2>Shippy</h2>
+      <p>A parcel tracker that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
+      <a class="btn line" href="https://shippy.echlonlabs.com/">Visit Shippy</a>
     </div>
   </section>
 
@@ -224,19 +242,10 @@ footer a:hover{color:var(--mist)}
     </div>
   </section>
 
-  <section class="scene finale" id="contact" data-cam style="--c:#FFC66B">
+  <section class="scene outro" id="start" data-cam style="--c:#FFC66B">
     <div class="copy">
-      <h2>Want a world of your own?</h2>
-      <p class="pitch">The lab does more than ship apps. It designs the system underneath them, builds the engine that drives it, and tunes it until it can run without a hand on the wheel.</p>
-      <dl class="build">
-        <div><dt>Systems that run themselves</dt><dd>Software that plans its own work, checks the result against written criteria, and refuses to ship what fails.</dd></div>
-        <div><dt>Engines, built from scratch</dt><dd>The core under a product: the planner, the pipeline, the reviewer. Echlon AI is one the lab runs every day.</dd></div>
-        <div><dt>AI optimisation</dt><dd>The right model for each job, prompted and measured, with local models on your own hardware where privacy or cost calls for it.</dd></div>
-        <div><dt>Architecture</dt><dd>The structure before the code: what talks to what, what fails safely, and what it costs to keep running.</dd></div>
-        <div><dt>Android and web apps</dt><dd>Complete products on their own address, like Shippy, Financial Manager and Python Trainer.</dd></div>
-        <div><dt>Security and infrastructure</dt><dd>Testing tools for the software you already run, and self-hosted setups the lab operates itself.</dd></div>
-      </dl>
-      <p>Tell the lab what you need:</p>
+      <h2>Your world could be next.</h2>
+      <p>Tell the lab what you need, and it will tell you how it would build it.</p>
       <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
     </div>
   </section>
@@ -244,14 +253,14 @@ footer a:hover{color:var(--mist)}
 
 <footer>
   <ul>
-    <li><a href="https://echlonai.echlonlabs.com/">Echlon AI</a></li>
-    <li><a href="https://shippy.echlonlabs.com/">Shippy</a></li>
-    <li><a href="https://financialmanager.echlonlabs.com/">Financial Manager</a></li>
-    <li><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></li>
-    <li><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></li>
-    <li><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></li>
-    <li><a href="https://shield.echlonlabs.com/">Shield</a></li>
     <li><a href="https://storm.echlonlabs.com/">Storm</a></li>
+    <li><a href="https://shield.echlonlabs.com/">Shield</a></li>
+    <li><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></li>
+    <li><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></li>
+    <li><a href="https://echlonai.echlonlabs.com/">Echlon AI</a></li>
+    <li><a href="https://financialmanager.echlonlabs.com/">Financial Manager</a></li>
+    <li><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></li>
+    <li><a href="https://shippy.echlonlabs.com/">Shippy</a></li>
     <li><a href="https://kinetipix.echlonlabs.com/">KinetiPix</a></li>
     <li><a href="https://cvmanager.echlonlabs.com/">CV Manager</a></li>
     <li><a href="https://designmaker.echlonlabs.com/">Design Maker</a></li>
@@ -276,22 +285,25 @@ function mod(a,n){return((a%n)+n)%n}
 
 /* ---------- the worlds ---------- */
 var P=[
- {n:"Echlon AI",        slot:4,R:16,c:["#F0E6FF","#8E5BFF","#2A0F73"],kind:"bands",f:["#5B2BD6","#C8B2FF","#3FD0FF"],ring:"#C9B4FF"},
- {n:"Shippy",           slot:1,R:11,c:["#D6F3FF","#2F8FE8","#0B2A6B"],kind:"blobs",f:["#F2C078","#E9A85A"]},
- {n:"Financial Manager",slot:6,R:13,c:["#E9FFDD","#3FB97A","#0C4A3A"],kind:"bands",f:["#F2D36B","#1E8A5F","#C4F2CF"]},
- {n:"Network 3D Live",  slot:3,R:12,c:["#DAFFFB","#19C3B6","#064A57"],kind:"bands",f:["#0E8F9C","#9DF7EC"],ring:"#8FF5E6"},
- {n:"Python Trainer",   slot:0,R:9, c:["#FFF5C2","#F0B429","#7A4A06"],kind:"blobs",f:["#3B6FB5","#2D5A99"]},
- {n:"Math Trainer",     slot:2,R:10,c:["#FFE4CA","#FF8A3D","#7A2A0A"],kind:"blobs",f:["#8A300C","#B8501C"]},
- {n:"Shield",           slot:8,R:13,c:["#E1E9FF","#5C7BD9","#141E52"],kind:"bands",f:["#27397F","#A6B9FF","#7FD0FF"]},
- {n:"Storm",            slot:10,R:14,c:["#FFDDD4","#D9483B","#4A0D14"],kind:"bands",f:["#7A1420","#FF9C7A","#2B0A12"],spot:"#FFD08A"},
- {n:"KinetiPix",        slot:5,R:11,c:["#FFDCF2","#F0489F","#5E0E4A"],kind:"blobs",f:["#FFB8E2","#B91E78"]},
- {n:"CV Manager",       slot:7,R:10,c:["#FFFFFF","#A8C8F0","#33507F"],kind:"blobs",f:["#F2F8FF","#7FA6DB"]},
- {n:"Design Maker",     slot:9,R:12,c:["#FFE7DB","#FF6F61","#6A1B3F"],kind:"bands",f:["#B14BD9","#FFC7AE","#FF9B5E"],ring:"#FFC1B0"}
+ /* rocky inner worlds: the cyber side, closest to the heat */
+ {n:"Storm",            o:112,R:7.5,c:["#FFE9B8","#E8502A","#3A0A08"],kind:"blobs",f:["#FFC04A","#FF7A2A","#5A0E0A"]},
+ {n:"Shield",           o:152,R:9.5,c:["#FFF3D6","#D9973B","#4A2A0A"],kind:"blobs",f:["#8A5A1E","#F7D08C","#B5762A"]},
+ {n:"Network 3D Live",  o:198,R:10, c:["#DAFFFB","#1FA8C9","#063A57"],kind:"blobs",f:["#3FCF8E","#2BAE74","#E9FFF6"]},
+ {n:"Math Trainer",     o:250,R:8,  c:["#FFE4CA","#E8703A","#6A220A"],kind:"blobs",f:["#8A300C","#B8501C","#FFD0A8"]},
+ /* the four giants */
+ {n:"Echlon AI",        o:410,R:23, c:["#F0E6FF","#8E5BFF","#2A0F73"],kind:"bands",f:["#5B2BD6","#C8B2FF","#3FD0FF"],spot:"#BFF3FF"},
+ {n:"Financial Manager",o:510,R:19, c:["#FFFBE0","#D9B84A","#3F4A12"],kind:"bands",f:["#F2D36B","#8FA83A","#FFF1B8"],ring:"#F2E2A0"},
+ {n:"Python Trainer",   o:600,R:14.5,c:["#F2FFFB","#7FD6CC","#1F5A6B"],kind:"bands",f:["#F0D86A","#4FA8C9","#C8F5EE"],ring:"#C8F5EE"},
+ {n:"Shippy",           o:680,R:14, c:["#D6F3FF","#2F7FE8","#0B2A6B"],kind:"bands",f:["#1B4FB5","#7FC4FF","#F2C078"]},
+ /* small worlds on the edge */
+ {n:"KinetiPix",        o:748,R:6,  c:["#FFDCF2","#F0489F","#5E0E4A"],kind:"blobs",f:["#FFB8E2","#B91E78"]},
+ {n:"CV Manager",       o:800,R:5.5,c:["#FFFFFF","#A8C8F0","#33507F"],kind:"blobs",f:["#F2F8FF","#7FA6DB"]},
+ {n:"Design Maker",     o:850,R:6.5,c:["#FFE7DB","#FF6F61","#6A1B3F"],kind:"blobs",f:["#B14BD9","#FFC7AE"]}
 ];
-var RMAX=150+10*68;
+var RMAX=850;
 P.forEach(function(p,i){
   var r=rng(1337+i*97);
-  p.orbit=150+p.slot*68; p.a0=p.slot*2.39996+0.6; p.speed=0.03/Math.sqrt(1+p.slot*0.55);
+  p.orbit=p.o; p.a0=i*2.39996+0.6; p.speed=0.03/Math.sqrt(p.o/110);
   p.tilt=(r()-0.5)*0.9; p.spin=0.01+r()*0.015; p.feat=[];
   if(p.kind==="bands"){
     var y=-1; while(y<1){var h=0.06+r()*0.22; p.feat.push({y:y,h:h,col:p.f[Math.floor(r()*p.f.length)],a:0.18+r()*0.4}); y+=h+r()*0.12;}
@@ -299,6 +311,8 @@ P.forEach(function(p,i){
     for(var k=0;k<16;k++) p.feat.push({x:r()*2.8-1.4,y:r()*1.8-0.9,r:0.12+r()*0.3,q:0.4+r()*0.5,rot:r()*3,col:p.f[Math.floor(r()*p.f.length)],a:0.35+r()*0.4});
   }
 });
+/* asteroid belt between the rocky worlds and the giants */
+var belt=[];(function(){var r=rng(99);for(var i=0;i<(innerWidth<=800?150:320);i++)belt.push({o:292+r()*62,a:r()*TAU,y:(r()-0.5)*14,s:0.6+r()*1.1,b:0.35+r()*0.5})})();
 
 /* ---------- stars and nebula ---------- */
 var stars=[], neb=null, shoot=null, nextShoot=4;
@@ -325,9 +339,10 @@ function proj(X,Y,Z){var v=view(X,Y,Z);if(v.z<2)return null;var s=F/v.z;return{x
 
 function key(i){
   if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.27),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.24,oy:mobile?H*0.2:-H*0.08,pl:false};
-  if(i>P.length) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.2,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.265,oy:mobile?-H*0.22:0,pl:false};
-  var p=P[i-1],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27);
-  return{tx:q.x,tz:q.z,dist:F*12/px,pitch:0.32,yaw:0.9-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
+  if(i===1) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.2,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.265,oy:mobile?-H*0.22:0,pl:false};
+  if(i>P.length+1) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.5:W*0.24),pitch:0.36,yaw:2.9+t*0.012,ox:mobile?0:W*0.27,oy:mobile?-H*0.18:-H*0.05,pl:false};
+  var p=P[i-2],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27)*(0.72+0.5*p.R/23);
+  return{tx:q.x,tz:q.z,dist:F*p.R/px,pitch:0.32,yaw:0.9-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
 }
 var scenes=[].slice.call(document.querySelectorAll("[data-cam]")), centers=[], prog=0;
 function measure(){centers=scenes.map(function(s){return s.offsetTop+s.offsetHeight/2})}
@@ -436,6 +451,12 @@ function frame(now){
     cx.stroke();
   }
 
+  /* asteroid belt */
+  cx.fillStyle="#D8CFF5";
+  for(i=0;i<belt.length;i++){var bt=belt[i],ba=bt.a+t*0.012,bq=proj(Math.cos(ba)*bt.o,bt.y,Math.sin(ba)*bt.o);
+    if(!bq||bq.x<0||bq.x>W||bq.y<0||bq.y>H)continue;var bs=clamp(bt.s*bq.s*0.9,0.5,2.6);cx.globalAlpha=bt.b;cx.beginPath();cx.arc(bq.x,bq.y,bs,0,TAU);cx.fill();}
+  cx.globalAlpha=1;
+
   /* bodies, far to near */
   var sv0=view(0,0,0), bodies=[], sp=proj(0,0,0);
   if(sp) bodies.push({z:sp.z,sun:sp});
@@ -462,7 +483,7 @@ function frame(now){
     if(b.i===hover){cx.strokeStyle=hexA(P[b.i].c[0],0.8);cx.lineWidth=1.5;cx.beginPath();cx.arc(b.q.x,b.q.y,r+6,0,TAU);cx.stroke();}
   }
 
-  var on=Math.round(prog)-1;
+  var on=Math.round(prog)-2;
   if(on!==frame.on){frame.on=on;for(i=0;i<dots.length;i++)dots[i].classList.toggle("on",i===on);}
   requestAnimationFrame(frame);
 }
@@ -476,7 +497,7 @@ function pick(e){
 }
 cv.addEventListener("pointermove",function(e){hover=pick(e);cv.style.cursor=hover>=0?"pointer":"default"});
 cv.addEventListener("pointerleave",function(){hover=-1});
-cv.addEventListener("click",function(e){var i=pick(e);if(i>=0)scenes[i+1].scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})});
+cv.addEventListener("click",function(e){var i=pick(e);if(i>=0)scenes[i+2].scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})});
 
 function resize(){
   W=innerWidth;H=innerHeight;mobile=W<=800;DPR=Math.min(devicePixelRatio||1,2);
