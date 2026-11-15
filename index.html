@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Echlon Labs — Ten worlds, one lab</title>
-<meta name="description" content="Echlon Labs is an independent software lab. Fly through the ten products it has built: Android apps, web tools, security software and an AI engine that runs a software company.">
+<title>Echlon Labs — Eleven worlds, one lab</title>
+<meta name="description" content="Echlon Labs is an independent software lab. Fly through the eleven products it has built: Android apps, web tools, security software and an AI engine that runs a software company.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@ main{position:relative;z-index:1;pointer-events:none}
 
 .hero{align-items:flex-end;padding-bottom:11vh}
 .hero .copy{max-width:60rem}
-h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7.4vw,6.9rem);line-height:.98;letter-spacing:-.025em;margin:0 0 1.6rem}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.5rem,6.3vw,5.9rem);line-height:.98;letter-spacing:-.025em;margin:0 0 1.6rem}
 .lede{font-size:clamp(1.1rem,1.5vw,1.3rem);max-width:31rem;margin:0 0 2rem;color:var(--mist)}
 .row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
 
@@ -105,7 +105,8 @@ footer a:hover{color:var(--mist)}
   <li><a href="#network-3d-live" title="Network 3D Live" aria-label="Network 3D Live" style="--c:#2FD6C8"></a></li>
   <li><a href="#python-trainer" title="Python Trainer" aria-label="Python Trainer" style="--c:#F5BE3B"></a></li>
   <li><a href="#math-trainer" title="Math Trainer" aria-label="Math Trainer" style="--c:#FF9A57"></a></li>
-  <li><a href="#stormshield" title="StormShield" aria-label="StormShield" style="--c:#7E99F0"></a></li>
+  <li><a href="#shield" title="Shield" aria-label="Shield" style="--c:#7E99F0"></a></li>
+  <li><a href="#storm" title="Storm" aria-label="Storm" style="--c:#F0685A"></a></li>
   <li><a href="#kinetipix" title="KinetiPix" aria-label="KinetiPix" style="--c:#F562AE"></a></li>
   <li><a href="#cv-manager" title="CV Manager" aria-label="CV Manager" style="--c:#B9D4F5"></a></li>
   <li><a href="#design-maker" title="Design Maker" aria-label="Design Maker" style="--c:#FF8377"></a></li>
@@ -114,7 +115,7 @@ footer a:hover{color:var(--mist)}
 <main id="top">
   <section class="scene hero" data-cam>
     <div class="copy">
-      <h1>Ten worlds,<br>one lab.</h1>
+      <h1>Eleven worlds,<br>one lab.</h1>
       <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here: Android apps, web tools, security software, and an AI engine that runs a whole software company.</p>
       <div class="row">
         <a class="btn solid" href="#echlon-ai">Fly through the worlds</a>
@@ -178,12 +179,21 @@ footer a:hover{color:var(--mist)}
     </div>
   </section>
 
-  <section class="scene world" id="stormshield" data-cam style="--c:#A9BCFF">
+  <section class="scene world" id="shield" data-cam style="--c:#A9BCFF">
     <div class="copy">
-      <p class="kind">Security software</p>
-      <h2>StormShield</h2>
-      <p>Security testing tools in two parts: shield and storm.</p>
-      <a class="btn line" href="https://shield.echlonlabs.com/">Visit StormShield</a>
+      <p class="kind">Defensive security</p>
+      <h2>Shield</h2>
+      <p>A workflow engine for defensive security. It runs your assessments as repeatable workflows and turns raw tool output into prioritised findings you can track.</p>
+      <a class="btn line" href="https://shield.echlonlabs.com/">Visit Shield</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="storm" data-cam style="--c:#FF9A8A">
+    <div class="copy">
+      <p class="kind">Adversary simulation</p>
+      <h2>Storm</h2>
+      <p>An authorised adversary-simulation toolkit. It runs controlled red-team exercises that test your detection, your response and your people, in scope and with permission.</p>
+      <a class="btn line" href="https://storm.echlonlabs.com/">Visit Storm</a>
     </div>
   </section>
 
@@ -240,7 +250,8 @@ footer a:hover{color:var(--mist)}
     <li><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></li>
     <li><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></li>
     <li><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></li>
-    <li><a href="https://shield.echlonlabs.com/">StormShield</a></li>
+    <li><a href="https://shield.echlonlabs.com/">Shield</a></li>
+    <li><a href="https://storm.echlonlabs.com/">Storm</a></li>
     <li><a href="https://kinetipix.echlonlabs.com/">KinetiPix</a></li>
     <li><a href="https://cvmanager.echlonlabs.com/">CV Manager</a></li>
     <li><a href="https://designmaker.echlonlabs.com/">Design Maker</a></li>
@@ -271,12 +282,13 @@ var P=[
  {n:"Network 3D Live",  slot:3,R:12,c:["#DAFFFB","#19C3B6","#064A57"],kind:"bands",f:["#0E8F9C","#9DF7EC"],ring:"#8FF5E6"},
  {n:"Python Trainer",   slot:0,R:9, c:["#FFF5C2","#F0B429","#7A4A06"],kind:"blobs",f:["#3B6FB5","#2D5A99"]},
  {n:"Math Trainer",     slot:2,R:10,c:["#FFE4CA","#FF8A3D","#7A2A0A"],kind:"blobs",f:["#8A300C","#B8501C"]},
- {n:"StormShield",      slot:8,R:14,c:["#E1E9FF","#5C7BD9","#141E52"],kind:"bands",f:["#27397F","#A6B9FF","#E86A6A"],spot:"#FF8A7A"},
+ {n:"Shield",           slot:8,R:13,c:["#E1E9FF","#5C7BD9","#141E52"],kind:"bands",f:["#27397F","#A6B9FF","#7FD0FF"]},
+ {n:"Storm",            slot:10,R:14,c:["#FFDDD4","#D9483B","#4A0D14"],kind:"bands",f:["#7A1420","#FF9C7A","#2B0A12"],spot:"#FFD08A"},
  {n:"KinetiPix",        slot:5,R:11,c:["#FFDCF2","#F0489F","#5E0E4A"],kind:"blobs",f:["#FFB8E2","#B91E78"]},
  {n:"CV Manager",       slot:7,R:10,c:["#FFFFFF","#A8C8F0","#33507F"],kind:"blobs",f:["#F2F8FF","#7FA6DB"]},
  {n:"Design Maker",     slot:9,R:12,c:["#FFE7DB","#FF6F61","#6A1B3F"],kind:"bands",f:["#B14BD9","#FFC7AE","#FF9B5E"],ring:"#FFC1B0"}
 ];
-var RMAX=150+9*68;
+var RMAX=150+10*68;
 P.forEach(function(p,i){
   var r=rng(1337+i*97);
   p.orbit=150+p.slot*68; p.a0=p.slot*2.39996+0.6; p.speed=0.03/Math.sqrt(1+p.slot*0.55);
@@ -312,7 +324,7 @@ function view(X,Y,Z){
 function proj(X,Y,Z){var v=view(X,Y,Z);if(v.z<2)return null;var s=F/v.z;return{x:W/2+cam.ox+v.x*s,y:H/2+cam.oy+v.y*s,s:s,z:v.z}}
 
 function key(i){
-  if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.31),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.2,oy:mobile?H*0.2:-H*0.08,pl:false};
+  if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.27),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.24,oy:mobile?H*0.2:-H*0.08,pl:false};
   if(i>P.length) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.2,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.265,oy:mobile?-H*0.22:0,pl:false};
   var p=P[i-1],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27);
   return{tx:q.x,tz:q.z,dist:F*12/px,pitch:0.32,yaw:0.9-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
