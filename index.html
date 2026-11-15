@@ -3,259 +3,475 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Echlon Labs — Software, made in one lab</title>
-<meta name="description" content="Echlon Labs is an independent software lab. Android apps, web tools, security testing and an AI engine that runs a software company.">
-<meta property="og:title" content="Echlon Labs">
-<meta property="og:description" content="An independent software lab: Android apps, web tools, security testing and an AI engine that runs a software company.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://echlonlabs.com/">
-<meta name="theme-color" content="#E8EDF1">
+<title>Echlon Labs — Ten worlds, one lab</title>
+<meta name="description" content="Echlon Labs is an independent software lab. Fly through the ten products it has built: Android apps, web tools, security software and an AI engine that runs a software company.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Unbounded:wght@500;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#E8EDF1;
-  --ink:#0F1B2D;
-  --slate:#4A5668;
-  --rule:rgba(15,27,45,.22);
-  --signal:#2438F0;
-  --max:1200px;
+  --void:#070418; --deep:#170C40; --mist:#EDE8FF; --haze:#B4ABDD; --sun:#FFC66B; --c:#B58CFF;
+  --display:"Unbounded",system-ui,sans-serif; --body:"Instrument Sans",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font-family:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  font-size:1.0625rem;line-height:1.6;font-variation-settings:"opsz" 14;
-  -webkit-font-smoothing:antialiased;
-}
+body{margin:0;background:var(--void);color:var(--mist);font-family:var(--body);font-size:1.0625rem;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+#sky{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:0}
 a{color:inherit}
-:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:2px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+:focus-visible{outline:2px solid var(--sun);outline-offset:3px;border-radius:4px}
 
-/* header */
-header{padding:1.5rem 0}
-header .wrap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
-.mark{font-weight:700;font-size:1.25rem;letter-spacing:-.02em;text-decoration:none;font-stretch:85%}
-nav{display:flex;gap:1.75rem}
-nav a{text-decoration:none;color:var(--slate);font-size:1rem;white-space:nowrap}
-.mark{white-space:nowrap}
-nav a:hover{color:var(--signal);text-decoration:underline;text-underline-offset:.3em}
+.top{position:fixed;inset:0 0 auto 0;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:1.1rem clamp(1.25rem,4vw,3rem);pointer-events:none}
+.top a{pointer-events:auto;text-decoration:none}
+.mark{font-family:var(--display);font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.top nav{display:flex;gap:1.6rem;align-items:center;font-weight:500;font-size:.95rem}
+.top nav a:not(.btn){color:var(--haze)}
+.top nav a:not(.btn):hover{color:var(--mist)}
 
-/* hero */
-.hero{padding:clamp(3rem,9vw,7rem) 0 clamp(2.5rem,5vw,4rem)}
-h1{
-  margin:0;font-weight:760;font-stretch:75%;
-  font-size:clamp(3.25rem,10.5vw,9rem);line-height:.92;letter-spacing:-.035em;
-  font-variation-settings:"opsz" 96;max-width:15ch;
+.btn{display:inline-block;padding:.8rem 1.35rem;border-radius:999px;font-weight:600;text-decoration:none;line-height:1.2;transition:transform .15s ease,background-color .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn.solid{background:var(--sun);color:#1D1203}
+.btn.line{border:1.5px solid color-mix(in srgb,var(--c) 75%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent)}
+.btn.small{padding:.55rem 1rem;font-size:.9rem}
+
+main{position:relative;z-index:1;pointer-events:none}
+.scene{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:6rem clamp(1.25rem,6vw,6rem)}
+.copy{pointer-events:auto;max-width:33rem;text-shadow:0 2px 26px rgba(7,4,24,.95),0 0 2px rgba(7,4,24,.8)}
+.copy .btn{text-shadow:none}
+
+.hero{align-items:flex-end;padding-bottom:11vh}
+.hero .copy{max-width:60rem}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.6rem,7.4vw,6.9rem);line-height:.98;letter-spacing:-.025em;margin:0 0 1.6rem}
+.lede{font-size:clamp(1.1rem,1.5vw,1.3rem);max-width:31rem;margin:0 0 2rem;color:var(--mist)}
+.row{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center}
+
+.world{min-height:125vh;min-height:125svh}
+.kind{font-weight:600;color:var(--c);margin:0 0 .7rem}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.6vw,3.9rem);line-height:1.02;letter-spacing:-.02em;margin:0 0 1.2rem}
+.world p{margin:0 0 1.1rem}
+.world .more{color:var(--haze)}
+.world .btn{margin-top:.6rem}
+
+.finale{min-height:120vh;min-height:120svh}
+.finale .copy{max-width:36rem}
+.build{list-style:none;padding:0;margin:0 0 2rem;display:grid;gap:.9rem}
+.build li{padding-left:1.4rem;position:relative}
+.build li::before{content:"";position:absolute;left:0;top:.55em;width:.6rem;height:.6rem;border-radius:50%;background:var(--sun);box-shadow:0 0 12px var(--sun)}
+.build b{font-weight:600}
+.mail{font-family:var(--display);font-weight:500;font-size:clamp(1.05rem,2.1vw,1.5rem);text-decoration-color:var(--sun);text-underline-offset:.3em}
+
+footer{position:relative;z-index:1;padding:2.5rem clamp(1.25rem,6vw,6rem) 2rem;background:linear-gradient(transparent,rgba(7,4,24,.92) 40%);color:var(--haze);font-size:.92rem}
+footer ul{list-style:none;padding:0;margin:0 0 1.2rem;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem}
+footer a{text-decoration:none}
+footer a:hover{color:var(--mist)}
+
+.rail{position:fixed;right:1.2rem;top:50%;transform:translateY(-50%);z-index:3;display:grid;gap:.7rem;list-style:none;margin:0;padding:0}
+.rail a{display:block;width:.6rem;height:.6rem;border-radius:50%;background:var(--c);opacity:.35;transition:transform .2s ease,opacity .2s ease}
+.rail a:hover,.rail a.on{opacity:1;transform:scale(1.7);box-shadow:0 0 14px var(--c)}
+
+@media (max-width:800px){
+  .top nav a:not(.btn){display:none}
+  .rail{display:none}
+  .hero{align-items:flex-start;padding-top:6.5rem}
+  .world,.finale{align-items:flex-end;padding-bottom:9vh}
+  .world{min-height:135svh}
 }
-.lede{max-width:34rem;margin:2rem 0 0;font-size:clamp(1.15rem,2vw,1.4rem);line-height:1.5;color:var(--ink)}
-
-/* index of work */
-.work{padding-bottom:clamp(3rem,7vw,6rem)}
-.work h2,.section h2{
-  margin:0 0 1.25rem;font-size:1rem;font-weight:600;color:var(--slate);letter-spacing:0;
-}
-.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.row{
-  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) minmax(0,.8fr);
-  gap:1rem 2rem;align-items:baseline;padding:1.35rem 0;border-bottom:1px solid var(--rule);
-  transition:background-color .15s,padding .15s;
-}
-.row h3{margin:0;font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:680;letter-spacing:-.02em;line-height:1.1;font-stretch:85%;font-variation-settings:"opsz" 48}
-.row h3 a{text-decoration:none}
-.row h3 a::after{content:"";position:absolute;inset:0}
-.row{position:relative}
-.row p{margin:0;color:var(--ink);max-width:40rem}
-.row .kind{color:var(--slate);font-size:.95rem}
-.row .kind a{position:relative;z-index:1}
-.row:hover,.row:focus-within{background:var(--ink);color:var(--paper);padding-left:1rem;padding-right:1rem}
-.row:hover p,.row:focus-within p{color:var(--paper)}
-.row:hover .kind,.row:focus-within .kind{color:#B9C4D4}
-.row:hover h3 a,.row:focus-within h3 a{color:var(--paper)}
-.row:focus-within{outline:3px solid var(--signal);outline-offset:-3px}
-.row:focus-within :focus-visible{outline:none}
-
-@keyframes settle{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:no-preference){
-  .rows .row{animation:settle .6s cubic-bezier(.2,.7,.2,1) both}
-  .rows .row:nth-child(1){animation-delay:.05s}
-  .rows .row:nth-child(2){animation-delay:.12s}
-  .rows .row:nth-child(3){animation-delay:.19s}
-  .rows .row:nth-child(4){animation-delay:.26s}
-  .rows .row:nth-child(5){animation-delay:.33s}
-  .rows .row:nth-child(6){animation-delay:.40s}
-  .rows .row:nth-child(7){animation-delay:.47s}
-  .rows .row:nth-child(8){animation-delay:.54s}
-  .rows .row:nth-child(9){animation-delay:.61s}
-  .rows .row:nth-child(10){animation-delay:.68s}
-}
-
-/* sections */
-.section{padding:clamp(3rem,7vw,6rem) 0;border-top:1px solid var(--ink)}
-.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:2rem clamp(2rem,6vw,6rem)}
-.section h3.big{margin:0;font-size:clamp(2rem,4.2vw,3.4rem);font-weight:720;font-stretch:80%;letter-spacing:-.03em;line-height:1.02;font-variation-settings:"opsz" 72}
-.section p{margin:0 0 1.1rem;max-width:38rem}
-.steps{margin:1.5rem 0 0;padding:0;list-style:none;counter-reset:s;max-width:38rem}
-.steps li{counter-increment:s;display:grid;grid-template-columns:2.5rem 1fr;gap:1rem;padding:.8rem 0;border-top:1px solid var(--rule)}
-.steps li::before{content:counter(s);font-weight:700;color:var(--signal);font-variant-numeric:tabular-nums}
-.steps li:last-child{border-bottom:1px solid var(--rule)}
-.addr{margin:0;padding:0;list-style:none;columns:2;column-gap:2rem;max-width:34rem}
-.addr li{padding:.35rem 0;break-inside:avoid}
-.addr a{color:var(--slate)}
-.addr a:hover{color:var(--signal)}
-.contact-main{font-size:clamp(1.6rem,3.6vw,2.8rem);font-weight:700;font-stretch:85%;letter-spacing:-.025em;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.2em}
-.contact-main:hover{color:var(--signal)}
-
-footer{padding:2rem 0 3rem;border-top:1px solid var(--ink);color:var(--slate);font-size:.95rem}
-footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
-
-@media (max-width:760px){
-  .row{grid-template-columns:1fr;gap:.35rem}
-  .cols{grid-template-columns:1fr}
-  .addr{columns:1}
-  nav{gap:1.1rem}
-  nav a[href="#echlon-ai"]{display:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn,.rail a{transition:none}
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <a class="mark" href="#top">Echlon Labs</a>
-    <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#echlon-ai">Echlon AI</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+<canvas id="sky" aria-hidden="true"></canvas>
+
+<header class="top">
+  <a class="mark" href="#top">Echlon Labs</a>
+  <nav aria-label="Main">
+    <a href="#echlon-ai">Worlds</a>
+    <a href="#contact">Services</a>
+    <a class="btn solid small" href="mailto:hello@echlonlabs.com">Hire the lab</a>
+  </nav>
 </header>
 
+<ul class="rail" aria-label="Jump to a project">
+  <li><a href="#echlon-ai" title="Echlon AI" aria-label="Echlon AI" style="--c:#A47BFF"></a></li>
+  <li><a href="#shippy" title="Shippy" aria-label="Shippy" style="--c:#4FA8F5"></a></li>
+  <li><a href="#financial-manager" title="Financial Manager" aria-label="Financial Manager" style="--c:#4FCB8C"></a></li>
+  <li><a href="#network-3d-live" title="Network 3D Live" aria-label="Network 3D Live" style="--c:#2FD6C8"></a></li>
+  <li><a href="#python-trainer" title="Python Trainer" aria-label="Python Trainer" style="--c:#F5BE3B"></a></li>
+  <li><a href="#math-trainer" title="Math Trainer" aria-label="Math Trainer" style="--c:#FF9A57"></a></li>
+  <li><a href="#stormshield" title="StormShield" aria-label="StormShield" style="--c:#7E99F0"></a></li>
+  <li><a href="#kinetipix" title="KinetiPix" aria-label="KinetiPix" style="--c:#F562AE"></a></li>
+  <li><a href="#cv-manager" title="CV Manager" aria-label="CV Manager" style="--c:#B9D4F5"></a></li>
+  <li><a href="#design-maker" title="Design Maker" aria-label="Design Maker" style="--c:#FF8377"></a></li>
+</ul>
+
 <main id="top">
-  <section class="hero">
-    <div class="wrap">
-      <h1>Software, made in one lab.</h1>
-      <p class="lede">Echlon Labs is an independent software lab. It builds Android apps, web tools, security testing software, and an AI engine that runs a software company.</p>
+  <section class="scene hero" data-cam>
+    <div class="copy">
+      <h1>Ten worlds,<br>one lab.</h1>
+      <p class="lede">Echlon Labs is an independent software lab. Everything it has built is in orbit here: Android apps, web tools, security software, and an AI engine that runs a whole software company.</p>
+      <div class="row">
+        <a class="btn solid" href="#echlon-ai">Fly through the worlds</a>
+        <a class="btn line" href="#contact">Build one with the lab</a>
+      </div>
     </div>
   </section>
 
-  <section class="work" id="work" aria-labelledby="work-h">
-    <div class="wrap">
-      <h2 id="work-h">What the lab has built</h2>
-      <ul class="rows">
-        <li class="row">
-          <h3><a href="https://echlonai.echlonlabs.com/">Echlon AI</a></h3>
-          <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
-          <span class="kind">Web platform</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://shippy.echlonlabs.com/">Shippy</a></h3>
-          <p>A parcel tracker for Android that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
-          <span class="kind">Android</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://financialmanager.echlonlabs.com/">Financial Manager</a></h3>
-          <p>A personal finance app for Android that reads Israeli payslip PDFs and keeps your money in one place.</p>
-          <span class="kind">Android</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></h3>
-          <p>See the devices on your Wi-Fi network and watch their traffic, live.</p>
-          <span class="kind">Android</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></h3>
-          <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
-          <span class="kind">Web</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></h3>
-          <p>A practice app for school maths.</p>
-          <span class="kind">Web</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://shield.echlonlabs.com/">StormShield</a></h3>
-          <p>Security testing tools in two parts: shield and storm.</p>
-          <span class="kind">Security</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://kinetipix.echlonlabs.com/">KinetiPix</a></h3>
-          <p>A web app from the lab.</p>
-          <span class="kind">Web</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://cvmanager.echlonlabs.com/">CV Manager</a></h3>
-          <p>A web app for keeping your CVs in order.</p>
-          <span class="kind">Web</span>
-        </li>
-        <li class="row">
-          <h3><a href="https://designmaker.echlonlabs.com/">Design Maker</a></h3>
-          <p>A web app for making designs.</p>
-          <span class="kind">Web</span>
-        </li>
+  <section class="scene world" id="echlon-ai" data-cam style="--c:#C3A6FF">
+    <div class="copy">
+      <p class="kind">Web platform, the lab's flagship</p>
+      <h2>Echlon AI</h2>
+      <p>A software company staffed by agents. Describe a goal, approve the plan, and a reviewed, tested result comes back.</p>
+      <p class="more">Fifty-two roles across eight departments sit behind one request box. A named reviewer signs off each piece of work, and real lint and test commands decide whether it passes.</p>
+      <a class="btn line" href="https://echlonai.echlonlabs.com/">Visit Echlon AI</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="shippy" data-cam style="--c:#8CC8FF">
+    <div class="copy">
+      <p class="kind">Android app</p>
+      <h2>Shippy</h2>
+      <p>A parcel tracker that reads your orders straight from your AliExpress account. It needs no access to your email.</p>
+      <a class="btn line" href="https://shippy.echlonlabs.com/">Visit Shippy</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="financial-manager" data-cam style="--c:#7FE3B0">
+    <div class="copy">
+      <p class="kind">Android app</p>
+      <h2>Financial Manager</h2>
+      <p>A personal finance app that reads Israeli payslip PDFs and keeps your money in one place.</p>
+      <a class="btn line" href="https://financialmanager.echlonlabs.com/">Visit Financial Manager</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="network-3d-live" data-cam style="--c:#6BEADF">
+    <div class="copy">
+      <p class="kind">Android app</p>
+      <h2>Network 3D Live</h2>
+      <p>See the devices on your Wi-Fi network and watch their traffic, live.</p>
+      <a class="btn line" href="https://networkanalyzer.echlonlabs.com/">Visit Network 3D Live</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="python-trainer" data-cam style="--c:#FFD466">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>Python Trainer</h2>
+      <p>Practice Python with a tutor that runs on a local language model. Access is by code.</p>
+      <a class="btn line" href="https://pythontrainer.echlonlabs.com/">Visit Python Trainer</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="math-trainer" data-cam style="--c:#FFB07A">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>Math Trainer</h2>
+      <p>A practice app for school maths.</p>
+      <a class="btn line" href="https://studenttrainer.echlonlabs.com/">Visit Math Trainer</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="stormshield" data-cam style="--c:#A9BCFF">
+    <div class="copy">
+      <p class="kind">Security software</p>
+      <h2>StormShield</h2>
+      <p>Security testing tools in two parts: shield and storm.</p>
+      <a class="btn line" href="https://shield.echlonlabs.com/">Visit StormShield</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="kinetipix" data-cam style="--c:#FF94C9">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>KinetiPix</h2>
+      <p>A web app from the lab.</p>
+      <a class="btn line" href="https://kinetipix.echlonlabs.com/">Visit KinetiPix</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="cv-manager" data-cam style="--c:#CFE2FA">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>CV Manager</h2>
+      <p>A web app for keeping your CVs in order.</p>
+      <a class="btn line" href="https://cvmanager.echlonlabs.com/">Visit CV Manager</a>
+    </div>
+  </section>
+
+  <section class="scene world" id="design-maker" data-cam style="--c:#FFA79E">
+    <div class="copy">
+      <p class="kind">Web app</p>
+      <h2>Design Maker</h2>
+      <p>A web app for making designs.</p>
+      <a class="btn line" href="https://designmaker.echlonlabs.com/">Visit Design Maker</a>
+    </div>
+  </section>
+
+  <section class="scene finale" id="contact" data-cam style="--c:#FFC66B">
+    <div class="copy">
+      <h2>Want a world of your own?</h2>
+      <p>The lab that built these ten can build yours, from the first sketch to the day it goes live.</p>
+      <ul class="build">
+        <li><b>Android apps</b> like Shippy and Financial Manager.</li>
+        <li><b>Web apps and tools</b> that ship on their own address.</li>
+        <li><b>AI agents</b> that plan, build and check their own work.</li>
+        <li><b>Security testing</b> for the software you already run.</li>
       </ul>
-    </div>
-  </section>
-
-  <section class="section" id="echlon-ai" aria-labelledby="ai-h">
-    <div class="wrap cols">
-      <h3 class="big" id="ai-h">Echlon AI is the lab's flagship.</h3>
-      <div>
-        <p>Coding assistants help one person type faster. Echlon AI works like an organisation: it plans the work, splits it up, has it reviewed, and refuses to ship something broken.</p>
-        <p>Fifty-two roles across eight departments sit behind one request box. Each role names the reviewer who signs its work off, and results are checked against written acceptance criteria before you see them.</p>
-        <ol class="steps">
-          <li>Describe the goal in one sentence.</li>
-          <li>It routes to the department that owns the work.</li>
-          <li>You approve the plan.</li>
-          <li>The team builds, and a named reviewer checks the result.</li>
-          <li>Real lint and test commands decide whether it passes.</li>
-          <li>You get the code.</li>
-        </ol>
-        <p style="margin-top:1.5rem"><a href="https://echlonai.echlonlabs.com/">Visit the Echlon AI site</a></p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="about" aria-labelledby="about-h">
-    <div class="wrap cols">
-      <h3 class="big" id="about-h">An independent lab, shipping its own products.</h3>
-      <div>
-        <p>Echlon Labs makes software it wants to use. Each product has its own address, its own page and its own inbox, so you can reach the people behind the thing you are using.</p>
-        <p>The lab works across Android, the web and self-hosted tools, and runs much of its own infrastructure.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="contact" aria-labelledby="contact-h">
-    <div class="wrap cols">
-      <h3 class="big" id="contact-h">Get in touch.</h3>
-      <div>
-        <p><a class="contact-main" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
-        <p style="margin-top:1.5rem">Writing about one product? Use its own address:</p>
-        <ul class="addr">
-          <li><a href="mailto:echlonai@echlonlabs.com">echlonai@echlonlabs.com</a></li>
-          <li><a href="mailto:shippy@echlonlabs.com">shippy@echlonlabs.com</a></li>
-          <li><a href="mailto:financialmanager@echlonlabs.com">financialmanager@echlonlabs.com</a></li>
-          <li><a href="mailto:networkanalyzer@echlonlabs.com">networkanalyzer@echlonlabs.com</a></li>
-          <li><a href="mailto:pythontrainer@echlonlabs.com">pythontrainer@echlonlabs.com</a></li>
-          <li><a href="mailto:studenttrainer@echlonlabs.com">studenttrainer@echlonlabs.com</a></li>
-          <li><a href="mailto:shield@echlonlabs.com">shield@echlonlabs.com</a></li>
-          <li><a href="mailto:storm@echlonlabs.com">storm@echlonlabs.com</a></li>
-          <li><a href="mailto:kinetipix@echlonlabs.com">kinetipix@echlonlabs.com</a></li>
-        </ul>
-      </div>
+      <p>Tell the lab what you need:</p>
+      <p><a class="mail" href="mailto:hello@echlonlabs.com">hello@echlonlabs.com</a></p>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap">
-    <span>© 2026 Echlon Labs</span>
-    <span>echlonlabs.com</span>
-  </div>
+  <ul>
+    <li><a href="https://echlonai.echlonlabs.com/">Echlon AI</a></li>
+    <li><a href="https://shippy.echlonlabs.com/">Shippy</a></li>
+    <li><a href="https://financialmanager.echlonlabs.com/">Financial Manager</a></li>
+    <li><a href="https://networkanalyzer.echlonlabs.com/">Network 3D Live</a></li>
+    <li><a href="https://pythontrainer.echlonlabs.com/">Python Trainer</a></li>
+    <li><a href="https://studenttrainer.echlonlabs.com/">Math Trainer</a></li>
+    <li><a href="https://shield.echlonlabs.com/">StormShield</a></li>
+    <li><a href="https://kinetipix.echlonlabs.com/">KinetiPix</a></li>
+    <li><a href="https://cvmanager.echlonlabs.com/">CV Manager</a></li>
+    <li><a href="https://designmaker.echlonlabs.com/">Design Maker</a></li>
+  </ul>
+  <div>© 2026 Echlon Labs</div>
 </footer>
+
+<script>
+(function(){
+"use strict";
+var cv=document.getElementById("sky"), cx=cv.getContext("2d");
+var TAU=Math.PI*2, F=800, W=0, H=0, DPR=1, mobile=false;
+var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function hexA(h,a){var n=parseInt(h.slice(1),16);return "rgba("+(n>>16)+","+(n>>8&255)+","+(n&255)+","+a+")"}
+function clamp(v,a,b){return v<a?a:v>b?b:v}
+function lerp(a,b,t){return a+(b-a)*t}
+function smooth(t){return t*t*(3-2*t)}
+function wrap(a){a=(a+Math.PI)%TAU;if(a<0)a+=TAU;return a-Math.PI}
+function mod(a,n){return((a%n)+n)%n}
+
+/* ---------- the worlds ---------- */
+var P=[
+ {n:"Echlon AI",        slot:4,R:16,c:["#F0E6FF","#8E5BFF","#2A0F73"],kind:"bands",f:["#5B2BD6","#C8B2FF","#3FD0FF"],ring:"#C9B4FF"},
+ {n:"Shippy",           slot:1,R:11,c:["#D6F3FF","#2F8FE8","#0B2A6B"],kind:"blobs",f:["#F2C078","#E9A85A"]},
+ {n:"Financial Manager",slot:6,R:13,c:["#E9FFDD","#3FB97A","#0C4A3A"],kind:"bands",f:["#F2D36B","#1E8A5F","#C4F2CF"]},
+ {n:"Network 3D Live",  slot:3,R:12,c:["#DAFFFB","#19C3B6","#064A57"],kind:"bands",f:["#0E8F9C","#9DF7EC"],ring:"#8FF5E6"},
+ {n:"Python Trainer",   slot:0,R:9, c:["#FFF5C2","#F0B429","#7A4A06"],kind:"blobs",f:["#3B6FB5","#2D5A99"]},
+ {n:"Math Trainer",     slot:2,R:10,c:["#FFE4CA","#FF8A3D","#7A2A0A"],kind:"blobs",f:["#8A300C","#B8501C"]},
+ {n:"StormShield",      slot:8,R:14,c:["#E1E9FF","#5C7BD9","#141E52"],kind:"bands",f:["#27397F","#A6B9FF","#E86A6A"],spot:"#FF8A7A"},
+ {n:"KinetiPix",        slot:5,R:11,c:["#FFDCF2","#F0489F","#5E0E4A"],kind:"blobs",f:["#FFB8E2","#B91E78"]},
+ {n:"CV Manager",       slot:7,R:10,c:["#FFFFFF","#A8C8F0","#33507F"],kind:"blobs",f:["#F2F8FF","#7FA6DB"]},
+ {n:"Design Maker",     slot:9,R:12,c:["#FFE7DB","#FF6F61","#6A1B3F"],kind:"bands",f:["#B14BD9","#FFC7AE","#FF9B5E"],ring:"#FFC1B0"}
+];
+var RMAX=150+9*68;
+P.forEach(function(p,i){
+  var r=rng(1337+i*97);
+  p.orbit=150+p.slot*68; p.a0=p.slot*2.39996+0.6; p.speed=0.03/Math.sqrt(1+p.slot*0.55);
+  p.tilt=(r()-0.5)*0.9; p.spin=0.01+r()*0.015; p.feat=[];
+  if(p.kind==="bands"){
+    var y=-1; while(y<1){var h=0.06+r()*0.22; p.feat.push({y:y,h:h,col:p.f[Math.floor(r()*p.f.length)],a:0.18+r()*0.4}); y+=h+r()*0.12;}
+  }else{
+    for(var k=0;k<16;k++) p.feat.push({x:r()*2.8-1.4,y:r()*1.8-0.9,r:0.12+r()*0.3,q:0.4+r()*0.5,rot:r()*3,col:p.f[Math.floor(r()*p.f.length)],a:0.35+r()*0.4});
+  }
+});
+
+/* ---------- stars and nebula ---------- */
+var stars=[], neb=null, shoot=null, nextShoot=4;
+function makeStars(){
+  var r=rng(42), n=Math.round(clamp(W*H/1900,280,900)); stars=[];
+  for(var i=0;i<n;i++){var d=Math.pow(r(),2.2)*0.9+0.1; stars.push({x:r(),y:r(),d:d,s:0.5+d*1.5*r()+0.3,tw:0.6+r()*2.4,ph:r()*TAU,col:r()<0.15?"#FFD9A0":r()<0.3?"#A9C4FF":"#FFFFFF"});}
+}
+function makeNebula(){
+  neb=document.createElement("canvas"); neb.width=neb.height=512; var g=neb.getContext("2d"), r=rng(7);
+  var cols=["#5B2BD6","#0E8F9C","#B91E78","#2F4FE8","#7A3BD9"];
+  for(var i=0;i<9;i++){var x=r()*512,y=r()*512,rad=110+r()*190,gr=g.createRadialGradient(x,y,0,x,y,rad);
+    gr.addColorStop(0,hexA(cols[i%cols.length],0.16)); gr.addColorStop(1,hexA(cols[i%cols.length],0)); g.fillStyle=gr; g.fillRect(0,0,512,512);}
+}
+
+/* ---------- camera ---------- */
+var cam={tx:0,tz:0,dist:1000,pitch:0.5,yaw:0.3,ox:0,oy:0}, t=0;
+function pos(p){var a=p.a0+t*p.speed;return{x:Math.cos(a)*p.orbit,z:Math.sin(a)*p.orbit,a:a}}
+function view(X,Y,Z){
+  var x=X-cam.tx,z=Z-cam.tz,cy=Math.cos(cam.yaw),sy=Math.sin(cam.yaw);
+  var x1=x*cy-z*sy,z1=x*sy+z*cy,cp=Math.cos(cam.pitch),sp=Math.sin(cam.pitch);
+  return{x:x1,y:Y*cp-z1*sp,z:Y*sp+z1*cp+cam.dist};
+}
+function proj(X,Y,Z){var v=view(X,Y,Z);if(v.z<2)return null;var s=F/v.z;return{x:W/2+cam.ox+v.x*s,y:H/2+cam.oy+v.y*s,s:s,z:v.z}}
+
+function key(i){
+  if(i<=0) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.47:W*0.31),pitch:0.5,yaw:0.35+t*0.012,ox:mobile?0:W*0.2,oy:mobile?H*0.2:-H*0.08,pl:false};
+  if(i>P.length) return{tx:0,tz:0,dist:F*RMAX/(mobile?W*0.45:Math.min(W*0.26,H*0.4)),pitch:1.22,yaw:1.6+t*0.012,ox:mobile?0:W*0.22,oy:mobile?-H*0.22:0,pl:false};
+  var p=P[i-1],q=pos(p),px=Math.min(W,H)*(mobile?0.25:0.27);
+  return{tx:q.x,tz:q.z,dist:F*12/px,pitch:0.32,yaw:0.9-q.a,ox:mobile?0:W*0.22,oy:mobile?-H*0.2:0,pl:true};
+}
+var scenes=[].slice.call(document.querySelectorAll("[data-cam]")), centers=[], prog=0;
+function measure(){centers=scenes.map(function(s){return s.offsetTop+s.offsetHeight/2})}
+function progress(){
+  var mid=scrollY+H/2,n=centers.length; if(mid<=centers[0])return 0; if(mid>=centers[n-1])return n-1;
+  for(var i=0;i<n-1;i++) if(mid<centers[i+1]) return i+(mid-centers[i])/(centers[i+1]-centers[i]);
+  return n-1;
+}
+function desired(){
+  var i=Math.floor(prog),f=prog-i,a=key(i),b=key(i+1),e=smooth(clamp((f-0.28)/0.44,0,1));
+  if(f===0) return a;
+  var arc=(a.pl&&b.pl)?1+Math.sin(Math.PI*e)*1.6:1;
+  return{tx:lerp(a.tx,b.tx,e),tz:lerp(a.tz,b.tz,e),dist:Math.exp(lerp(Math.log(a.dist),Math.log(b.dist),e))*arc,
+    pitch:lerp(a.pitch,b.pitch,e),yaw:a.yaw+wrap(b.yaw-a.yaw)*e,ox:lerp(a.ox,b.ox,e),oy:lerp(a.oy,b.oy,e)};
+}
+
+/* ---------- drawing ---------- */
+function ring(p,x,y,r,back){
+  cx.save();cx.translate(x,y);cx.rotate(p.tilt*0.6);
+  var ry=Math.max(0.16,Math.sin(cam.pitch))*0.9, a0=back?Math.PI:0;
+  cx.strokeStyle=hexA(p.ring,0.55);cx.lineWidth=r*0.26;cx.beginPath();cx.ellipse(0,0,r*1.7,r*1.7*ry,0,a0,a0+Math.PI);cx.stroke();
+  cx.strokeStyle=hexA(p.ring,0.3);cx.lineWidth=r*0.1;cx.beginPath();cx.ellipse(0,0,r*2.05,r*2.05*ry,0,a0,a0+Math.PI);cx.stroke();
+  cx.restore();
+}
+function planet(p,x,y,r,L){
+  var g=cx.createRadialGradient(x,y,r*0.85,x,y,r*1.55);
+  g.addColorStop(0,hexA(p.c[1],0.38));g.addColorStop(1,hexA(p.c[1],0));
+  cx.fillStyle=g;cx.beginPath();cx.arc(x,y,r*1.55,0,TAU);cx.fill();
+  if(p.ring&&r>5) ring(p,x,y,r,true);
+  cx.save();cx.beginPath();cx.arc(x,y,r,0,TAU);cx.clip();
+  g=cx.createRadialGradient(x+L.x*r*0.45,y+L.y*r*0.45,r*0.05,x,y,r*1.08);
+  g.addColorStop(0,p.c[0]);g.addColorStop(0.5,p.c[1]);g.addColorStop(1,p.c[2]);
+  cx.fillStyle=g;cx.fillRect(x-r,y-r,2*r,2*r);
+  if(r>7){
+    cx.save();cx.translate(x,y);cx.rotate(p.tilt);
+    var i,b;
+    if(p.kind==="bands"){
+      for(i=0;i<p.feat.length;i++){b=p.feat[i];cx.globalAlpha=b.a;cx.fillStyle=b.col;cx.fillRect(-r,b.y*r,2*r,b.h*r);}
+      if(p.spot){var sx=mod(0.3+t*p.spin+1.4,2.8)-1.4;cx.globalAlpha=0.75;cx.fillStyle=p.spot;cx.beginPath();cx.ellipse(sx*r,0.28*r,0.3*r,0.16*r,0,0,TAU);cx.fill();}
+    }else{
+      for(i=0;i<p.feat.length;i++){b=p.feat[i];var bx=mod(b.x+t*p.spin+1.4,2.8)-1.4;cx.globalAlpha=b.a;cx.fillStyle=b.col;cx.beginPath();cx.ellipse(bx*r,b.y*r,b.r*r,b.r*r*b.q,b.rot,0,TAU);cx.fill();}
+    }
+    cx.restore();
+  }
+  g=cx.createRadialGradient(x+L.x*r*0.6,y+L.y*r*0.6,r*0.3,x+L.x*r*0.15,y+L.y*r*0.15,r*1.5);
+  g.addColorStop(0,"rgba(5,2,18,0)");g.addColorStop(0.55,"rgba(5,2,18,0.28)");g.addColorStop(1,"rgba(5,2,18,0.93)");
+  cx.fillStyle=g;cx.fillRect(x-r,y-r,2*r,2*r);
+  cx.restore();
+  if(p.ring&&r>5) ring(p,x,y,r,false);
+}
+function sun(s){
+  var r=44*s.s, pulse=1+Math.sin(t*0.9)*0.04;
+  cx.save();cx.globalCompositeOperation="lighter";
+  var g=cx.createRadialGradient(s.x,s.y,0,s.x,s.y,r*7*pulse);
+  g.addColorStop(0,"rgba(255,198,107,0.55)");g.addColorStop(0.25,"rgba(255,140,80,0.16)");g.addColorStop(1,"rgba(255,120,80,0)");
+  cx.fillStyle=g;cx.beginPath();cx.arc(s.x,s.y,r*7*pulse,0,TAU);cx.fill();
+  g=cx.createRadialGradient(s.x,s.y,0,s.x,s.y,r*1.6);
+  g.addColorStop(0,"#FFFFFF");g.addColorStop(0.45,"#FFE3A8");g.addColorStop(1,"rgba(255,198,107,0)");
+  cx.fillStyle=g;cx.beginPath();cx.arc(s.x,s.y,r*1.6,0,TAU);cx.fill();
+  cx.restore();
+}
+
+var hits=[], hover=-1, lastY=0, vel=0, last=0;
+function frame(now){
+  var dt=Math.min(0.05,(now-last)/1000||0.016); last=now;
+  if(!reduce) t+=dt;
+  prog=progress();
+  var d=desired(), k=reduce?1:1-Math.exp(-dt*5.5);
+  cam.tx+=(d.tx-cam.tx)*k;cam.tz+=(d.tz-cam.tz)*k;cam.dist+=(d.dist-cam.dist)*k;cam.pitch+=(d.pitch-cam.pitch)*k;
+  cam.yaw+=wrap(d.yaw-cam.yaw)*k;cam.ox+=(d.ox-cam.ox)*k;cam.oy+=(d.oy-cam.oy)*k;
+  var sv=(scrollY-lastY)/dt; lastY=scrollY; vel+=(sv-vel)*0.2; if(reduce)vel=0;
+
+  cx.setTransform(DPR,0,0,DPR,0,0);
+  var bg=cx.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#070418");bg.addColorStop(1,"#170C40");
+  cx.fillStyle=bg;cx.fillRect(0,0,W,H);
+  var nx=Math.sin(cam.yaw*0.5)*W*0.12, ny=-prog/(centers.length-1||1)*H*0.25;
+  cx.drawImage(neb,-W*0.2+nx,-H*0.15+ny,W*1.4,H*1.5);
+
+  var i,s,streak;
+  for(i=0;i<stars.length;i++){
+    s=stars[i];
+    var x=mod(s.x*W-cam.yaw*s.d*260,W), y=mod(s.y*H-scrollY*s.d*0.35,H);
+    cx.globalAlpha=(0.45+s.d*0.55)*(reduce?1:0.72+0.28*Math.sin(t*s.tw+s.ph));
+    streak=clamp(vel*0.022*s.d,-140,140);
+    if(Math.abs(streak)>2){cx.strokeStyle=s.col;cx.lineWidth=s.s*0.8;cx.beginPath();cx.moveTo(x,y);cx.lineTo(x,y+streak);cx.stroke();}
+    else{cx.fillStyle=s.col;cx.fillRect(x,y,s.s,s.s);}
+  }
+  cx.globalAlpha=1;
+
+  if(!reduce){
+    nextShoot-=dt;
+    if(nextShoot<0&&!shoot){shoot={x:Math.random()*W*0.8,y:Math.random()*H*0.4,l:0};nextShoot=5+Math.random()*8;}
+    if(shoot){shoot.l+=dt*1.6;var sxp=shoot.x+shoot.l*W*0.35,syp=shoot.y+shoot.l*W*0.16,gr=cx.createLinearGradient(sxp,syp,sxp-110,syp-50);
+      gr.addColorStop(0,"rgba(255,255,255,"+(1-shoot.l)+")");gr.addColorStop(1,"rgba(255,255,255,0)");
+      cx.strokeStyle=gr;cx.lineWidth=1.5;cx.beginPath();cx.moveTo(sxp,syp);cx.lineTo(sxp-110,syp-50);cx.stroke();if(shoot.l>=1)shoot=null;}
+  }
+
+  /* orbits */
+  cx.lineWidth=1;
+  for(i=0;i<P.length;i++){
+    cx.strokeStyle=i===hover?hexA(P[i].c[1],0.7):"rgba(180,171,221,0.14)";
+    cx.beginPath();var pen=false;
+    for(var j=0;j<=128;j++){var a=j/128*TAU,q=proj(Math.cos(a)*P[i].orbit,0,Math.sin(a)*P[i].orbit);
+      if(!q){pen=false;continue}
+      if(pen)cx.lineTo(q.x,q.y);else{cx.moveTo(q.x,q.y);pen=true}}
+    cx.stroke();
+  }
+
+  /* bodies, far to near */
+  var sv0=view(0,0,0), bodies=[], sp=proj(0,0,0);
+  if(sp) bodies.push({z:sp.z,sun:sp});
+  hits.length=0;
+  for(i=0;i<P.length;i++){
+    var w=pos(P[i]),pp=proj(w.x,0,w.z); if(!pp)continue;
+    var pv=view(w.x,0,w.z),dx=sv0.x-pv.x,dy=sv0.y-pv.y,dz=sv0.z-pv.z,len=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
+    bodies.push({z:pp.z,i:i,q:pp,L:{x:dx/len,y:dy/len}});
+  }
+  bodies.sort(function(a,b){return b.z-a.z});
+  var ov=clamp((cam.dist/key(0).dist-0.45)/0.4,0,1);
+  for(i=0;i<bodies.length;i++){
+    var b=bodies[i];
+    if(b.sun){sun(b.sun);continue}
+    var r=Math.max(mobile?2.6:3.2,P[b.i].R*b.q.s);
+    if(b.q.x<-r*3||b.q.x>W+r*3||b.q.y<-r*3||b.q.y>H+r*3)continue;
+    planet(P[b.i],b.q.x,b.q.y,r,b.L);
+    hits.push({i:b.i,x:b.q.x,y:b.q.y,r:r});
+    if(ov>0.05&&(!mobile||b.i===hover)){
+      cx.font=(b.i===hover?"600 14px ":"500 12.5px ")+'"Instrument Sans",system-ui,sans-serif';
+      cx.fillStyle=b.i===hover?"#FFFFFF":"rgba(237,232,255,"+(ov*0.78)+")";
+      cx.fillText(P[b.i].n,b.q.x+r+9,b.q.y+4);
+    }
+    if(b.i===hover){cx.strokeStyle=hexA(P[b.i].c[0],0.8);cx.lineWidth=1.5;cx.beginPath();cx.arc(b.q.x,b.q.y,r+6,0,TAU);cx.stroke();}
+  }
+
+  var on=Math.round(prog)-1;
+  if(on!==frame.on){frame.on=on;for(i=0;i<dots.length;i++)dots[i].classList.toggle("on",i===on);}
+  requestAnimationFrame(frame);
+}
+
+/* ---------- interaction ---------- */
+var dots=[].slice.call(document.querySelectorAll(".rail a"));
+function pick(e){
+  var best=-1,bd=1e9;
+  for(var i=0;i<hits.length;i++){var h=hits[i],d=Math.hypot(e.clientX-h.x,e.clientY-h.y);if(d<Math.max(h.r+8,20)&&d<bd){bd=d;best=h.i}}
+  return best;
+}
+cv.addEventListener("pointermove",function(e){hover=pick(e);cv.style.cursor=hover>=0?"pointer":"default"});
+cv.addEventListener("pointerleave",function(){hover=-1});
+cv.addEventListener("click",function(e){var i=pick(e);if(i>=0)scenes[i+1].scrollIntoView({behavior:reduce?"auto":"smooth",block:"center"})});
+
+function resize(){
+  W=innerWidth;H=innerHeight;mobile=W<=800;DPR=Math.min(devicePixelRatio||1,2);
+  cv.width=Math.round(W*DPR);cv.height=Math.round(H*DPR);
+  makeStars();measure();
+}
+addEventListener("resize",resize);
+if(window.ResizeObserver) new ResizeObserver(measure).observe(document.querySelector("main"));
+makeNebula();resize();prog=progress();
+var d0=desired();for(var kk in cam)cam[kk]=d0[kk];
+lastY=scrollY;
+requestAnimationFrame(frame);
+})();
+</script>
 </body>
 </html>
