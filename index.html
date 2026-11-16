@@ -69,6 +69,10 @@ p{margin:0 0 1.1rem}
 .points dt{font-family:var(--display);font-weight:700;font-size:1.2rem}
 .points dd{margin:.15rem 0 0;color:var(--fog)}
 
+.duo{display:flex;align-items:center;gap:1.1rem;margin:0 0 1.7rem;padding:.7rem 1.1rem .7rem .6rem;border-radius:14px;background:rgba(20,26,51,.72);border:1px solid rgba(157,184,255,.18);text-shadow:none}
+.duo canvas{flex:none;width:112px;height:128px}
+.duo p{margin:0;color:var(--fog);font-size:1.02rem;line-height:1.45}
+.duo b{display:block;color:var(--ice);font-family:var(--display);font-size:1.12rem;margin-bottom:.2rem}
 .list{list-style:none;margin:1.3rem 0 0;padding:0}
 .list a{display:grid;grid-template-columns:12.5rem 1fr;gap:0 1.2rem;align-items:baseline;padding:.5rem .8rem .5rem 1rem;border-left:3px solid color-mix(in srgb,var(--c) 45%,transparent);border-radius:0 10px 10px 0;text-decoration:none;transition:background-color .15s ease,border-color .15s ease}
 .list li+li a{margin-top:.2rem}
@@ -162,6 +166,10 @@ footer a:hover{color:var(--ice)}
         <div><dt>Nothing is built until you approve</dt><dd>The head turns the goal into tasks with owners and acceptance criteria, and waits for your go.</dd></div>
         <div><dt>Tests decide what ships</dt><dd>Specialists build, a named reviewer signs off, and real lint and test runs gate the delivery.</dd></div>
       </dl>
+      <div class="duo">
+        <canvas id="fig" aria-hidden="true"></canvas>
+        <p><b>A model is the brain. The engine is the hands and legs.</b> Claude, Codex or another LLM does the thinking, and the engine carries it out on real systems.</p>
+      </div>
       <a class="btn solid" href="https://echlonai.echlonlabs.com/">Visit Echlon AI</a>
     </div>
   </section>
@@ -442,6 +450,82 @@ addEventListener("resize",resize);
 resize();var d0=desired();cam.e=d0.e;cam.sc=d0.sc;cam.cx=d0.cx;cam.cy=d0.cy;cam.al=d0.al;cam.lab=d0.lab;
 requestAnimationFrame(frame);
 })();
+</script>
+<script>
+/* A model as the brain, the engine as the hands and legs. targets: [] for the small figure, or labels. */
+function echlonFigure(cv,targets,models){
+  var cx=cv.getContext("2d"),W=0,H=0,D=1,t=0,last=0,TAU=Math.PI*2;
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var mini=!targets.length,n=mini?4:targets.length,STEP=3.4;
+  var ang=mini?[-0.13,0.33,0.67,1.13]:targets.map(function(_,i){return -0.1+1.2*i/(n-1)});
+  function size(){var r=cv.getBoundingClientRect();D=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;cv.width=W*D;cv.height=H*D}
+  function pill(x,y,txt,font,fill,stroke,ink,alignRight){
+    cx.font=font;var w=cx.measureText(txt).width+22,h=parseInt(font.match(/(\d+)px/)[1],10)+14,x0=alignRight?x-w:x-w/2;
+    cx.beginPath();cx.roundRect(x0,y-h/2,w,h,h/2);cx.fillStyle=fill;cx.fill();cx.strokeStyle=stroke;cx.lineWidth=1.5;cx.stroke();
+    cx.fillStyle=ink;cx.textAlign="left";cx.textBaseline="middle";cx.fillText(txt,x0+11,y+1);return{w:w,h:h};
+  }
+  function draw(){
+    cx.setTransform(D,0,0,D,0,0);cx.clearRect(0,0,W,H);
+    var u=(t%STEP)/STEP,turn=Math.floor(t/STEP),act=turn%n,m=Math.min(W,H),small=W<430;
+    var B={x:W*0.5,y:H*(mini?0.2:0.15)},E={x:W*0.5,y:H*(mini?0.52:0.47)},rb=m*(mini?0.15:0.085),re=m*(mini?0.1:0.055);
+    var think=u<0.26?u/0.26:0,sp=(u-0.24)/0.16,lp=(u-0.4)/0.24,done=u>0.64?Math.min(1,(u-0.64)/0.1):0,i,k;
+    /* limbs */
+    for(i=0;i<n;i++){
+      var a=ang[i]*Math.PI,rx=W*(mini?0.36:(small?0.36:0.4)),ry=H*(mini?0.36:0.43),on=i===act;
+      var T={x:E.x+Math.cos(a)*rx,y:E.y+Math.sin(a)*ry+(mini&&Math.sin(a)>0.5?Math.sin(t*2.4+i*Math.PI)*H*0.03:0)};
+      var mx=(E.x+T.x)/2,my=(E.y+T.y)/2,nx=-(T.y-E.y),ny=T.x-E.x,nl=Math.hypot(nx,ny)||1,sw=(Math.sin(t*1.5+i*1.9)*0.09+0.14)*(Math.cos(a)>=0?1:-1);
+      var C={x:mx+nx/nl*nl*sw,y:my+ny/nl*nl*sw};
+      var gap=mini?0:22,dx=T.x-C.x,dy=T.y-C.y,dl=Math.hypot(dx,dy)||1,Hd={x:T.x-dx/dl*gap,y:T.y-dy/dl*gap};
+      cx.strokeStyle=on&&lp>0?"#C9D6FF":"rgba(129,140,248,.7)";cx.lineWidth=mini?3:(on?3.4:2.6);cx.lineCap="round";
+      cx.beginPath();cx.moveTo(E.x,E.y);cx.quadraticCurveTo(C.x,C.y,Hd.x,Hd.y);cx.stroke();
+      /* hand or foot */
+      var ta=Math.atan2(dy,dx),hr=mini?4.5:6,grip=on&&done?0.25:0.6;
+      cx.lineWidth=mini?2.4:2.6;cx.beginPath();
+      for(k=-1;k<=1;k+=2){cx.moveTo(Hd.x,Hd.y);cx.lineTo(Hd.x+Math.cos(ta+k*grip)*hr*1.9,Hd.y+Math.sin(ta+k*grip)*hr*1.9)}cx.stroke();
+      cx.fillStyle="#C9D6FF";cx.beginPath();cx.arc(Hd.x,Hd.y,hr*0.75,0,TAU);cx.fill();
+      if(on&&lp>0&&lp<1){var q=lp,ix=(1-q)*(1-q)*E.x+2*(1-q)*q*C.x+q*q*Hd.x,iy=(1-q)*(1-q)*E.y+2*(1-q)*q*C.y+q*q*Hd.y;
+        cx.fillStyle="rgba(255,255,255,.25)";cx.beginPath();cx.arc(ix,iy,9,0,TAU);cx.fill();cx.fillStyle="#fff";cx.beginPath();cx.arc(ix,iy,3.6,0,TAU);cx.fill()}
+      if(!mini){
+        var ok=on&&done>0,fs=small?12:15;
+        var px=T.x+Math.cos(a)*(small?4:14),py=T.y+Math.sin(a)*16;
+        cx.font="600 "+fs+"px 'Hanken Grotesk',system-ui,sans-serif";var tw=cx.measureText(targets[i]+(ok?" ✓":"")).width+22;
+        px=Math.max(tw/2+4,Math.min(W-tw/2-4,px));
+        pill(px,py,targets[i]+(ok?" ✓":""),"600 "+fs+"px 'Hanken Grotesk',system-ui,sans-serif",ok?"rgba(52,211,153,.16)":"rgba(20,26,51,.92)",ok?"#34D399":"rgba(157,184,255,.35)",ok?"#7CF0C3":"#E8ECF6");
+      }
+    }
+    /* spine */
+    cx.strokeStyle="rgba(195,166,255,.75)";cx.lineWidth=mini?2.4:3;cx.setLineDash([3,7]);cx.lineDashOffset=-t*26;cx.beginPath();cx.moveTo(B.x,B.y+rb*0.9);cx.lineTo(E.x,E.y-re);cx.stroke();cx.setLineDash([]);
+    if(sp>0&&sp<1){var sy=B.y+rb*0.9+(E.y-re-B.y-rb*0.9)*sp;cx.fillStyle="#fff";cx.beginPath();cx.arc(B.x,sy,mini?3:4,0,TAU);cx.fill()}
+    /* the engine */
+    var flash=(sp>0.8&&lp<0.3)?1:0,es=re*(1+flash*0.12);
+    cx.fillStyle="rgba(99,102,241,"+(0.28+flash*0.3)+")";cx.beginPath();cx.arc(E.x,E.y,es*2.1,0,TAU);cx.fill();
+    cx.fillStyle="#E8ECF6";cx.beginPath();cx.moveTo(E.x,E.y-es*1.25);cx.lineTo(E.x+es,E.y);cx.lineTo(E.x,E.y+es*1.25);cx.lineTo(E.x-es,E.y);cx.closePath();cx.fill();
+    cx.fillStyle="#6366F1";cx.beginPath();cx.moveTo(E.x,E.y-es*0.58);cx.lineTo(E.x+es*0.46,E.y);cx.lineTo(E.x,E.y+es*0.58);cx.lineTo(E.x-es*0.46,E.y);cx.closePath();cx.fill();
+    /* the brain */
+    var glow=0.22+0.3*Math.sin(think*Math.PI);
+    cx.fillStyle="rgba(195,166,255,"+glow+")";cx.beginPath();cx.arc(B.x,B.y,rb*1.75,0,TAU);cx.fill();
+    cx.fillStyle="#C3A6FF";var lobes=[[-0.48,-0.12,0.62],[0.48,-0.12,0.62],[-0.2,-0.42,0.52],[0.2,-0.42,0.52],[-0.5,0.3,0.5],[0.5,0.3,0.5],[0,0.28,0.6]];
+    cx.beginPath();for(k=0;k<lobes.length;k++){cx.moveTo(B.x+lobes[k][0]*rb+lobes[k][2]*rb,B.y+lobes[k][1]*rb);cx.arc(B.x+lobes[k][0]*rb,B.y+lobes[k][1]*rb,lobes[k][2]*rb,0,TAU)}cx.fill();
+    cx.strokeStyle="#5B3FB3";cx.lineWidth=Math.max(1.4,rb*0.07);cx.lineCap="round";cx.beginPath();
+    cx.moveTo(B.x,B.y-rb*0.85);cx.bezierCurveTo(B.x-rb*0.14,B.y-rb*0.3,B.x+rb*0.14,B.y+rb*0.2,B.x,B.y+rb*0.8);
+    cx.moveTo(B.x-rb*0.78,B.y-rb*0.05);cx.quadraticCurveTo(B.x-rb*0.45,B.y-rb*0.4,B.x-rb*0.22,B.y-rb*0.02);
+    cx.moveTo(B.x+rb*0.78,B.y-rb*0.05);cx.quadraticCurveTo(B.x+rb*0.45,B.y-rb*0.4,B.x+rb*0.22,B.y-rb*0.02);
+    cx.moveTo(B.x-rb*0.7,B.y+rb*0.42);cx.quadraticCurveTo(B.x-rb*0.42,B.y+rb*0.15,B.x-rb*0.2,B.y+rb*0.45);
+    cx.moveTo(B.x+rb*0.7,B.y+rb*0.42);cx.quadraticCurveTo(B.x+rb*0.42,B.y+rb*0.15,B.x+rb*0.2,B.y+rb*0.45);cx.stroke();
+    if(think>0) for(k=0;k<5;k++){var sa=k*1.3+turn,srr=rb*(0.25+0.5*((k*37)%10)/10),on2=Math.sin(think*Math.PI*3+k)>0.3;if(on2){cx.fillStyle="#fff";cx.beginPath();cx.arc(B.x+Math.cos(sa)*srr,B.y+Math.sin(sa)*srr*0.8,rb*0.07,0,TAU);cx.fill()}}
+    /* labels */
+    if(!mini){
+      var f1="600 "+(small?12:14)+"px 'Hanken Grotesk',system-ui,sans-serif",mdl=models[turn%models.length];
+      cx.font=f1;cx.fillStyle="#C3A6FF";cx.textAlign="left";cx.textBaseline="middle";cx.fillText("The brain",B.x+rb*1.5+4,B.y-13);
+      cx.font="700 "+(small?15:19)+"px 'Bricolage Grotesque',system-ui,sans-serif";cx.fillStyle="#fff";cx.fillText(mdl,B.x+rb*1.5+4,B.y+9);
+      cx.font=f1;cx.fillStyle="#9DB8FF";cx.textAlign="right";cx.fillText("The engine",E.x-re*2.2-4,E.y-11);
+      cx.font="700 "+(small?13:15)+"px 'Hanken Grotesk',system-ui,sans-serif";cx.fillStyle="#E8ECF6";cx.fillText("hands and legs",E.x-re*2.2-4,E.y+9);
+    }
+  }
+  function frame(now){var dt=Math.min(0.05,(now-last)/1000||0);last=now;t=reduce?STEP*2.75:t+dt;draw();if(!reduce)requestAnimationFrame(frame)}
+  addEventListener("resize",function(){size();if(reduce)draw()});size();requestAnimationFrame(frame);
+}
+echlonFigure(document.getElementById("fig"),[],[]);
 </script>
 </body>
 </html>
